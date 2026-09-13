@@ -17,6 +17,8 @@ final class CameraController: NSObject, AVCapturePhotoCaptureDelegate, AVCapture
     var session = AVCaptureSession()
     var isFlashlightOn = false
     var isCapturingFrames = false
+    var isAuthorized = true
+    var permissionDenied = false
 
     private var photoOutput = AVCapturePhotoOutput()
     private var videoOutput = AVCaptureVideoDataOutput()
@@ -36,8 +38,33 @@ final class CameraController: NSObject, AVCapturePhotoCaptureDelegate, AVCapture
     override init() {
         super.init()
         #if !targetEnvironment(simulator)
-        setupSession()
+        checkAuthorizationAndSetup()
         #endif
+    }
+
+    func checkAuthorizationAndSetup() {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized:
+            isAuthorized = true
+            permissionDenied = false
+            setupSession()
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
+                DispatchQueue.main.async {
+                    self?.isAuthorized = granted
+                    self?.permissionDenied = !granted
+                    if granted {
+                        self?.setupSession()
+                    }
+                }
+            }
+        case .denied, .restricted:
+            isAuthorized = false
+            permissionDenied = true
+        @unknown default:
+            isAuthorized = false
+            permissionDenied = true
+        }
     }
 
     private func setupSession() {

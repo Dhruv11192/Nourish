@@ -206,4 +206,64 @@ final class CalorieCalculationEngineTests: XCTestCase {
         )
         XCTAssertGreaterThanOrEqual(profile.targetDailyCalories, 1000.0)
     }
+
+    // MARK: - Boundary & Edge Case Tests
+
+    func testBiologicalSexBoundaryValuesAndFallbacks() {
+        // Unknown/invalid string should fallback gracefully (defaults to male formula in engine)
+        let unknownBMR = CalorieCalculationEngine.calculateBMR(
+            weightInKg: 70.0,
+            heightInCm: 175.0,
+            age: 30,
+            biologicalSex: "other"
+        )
+        XCTAssertEqual(unknownBMR, 1648.75, accuracy: 0.01)
+
+        // Case-insensitive checks
+        let uppercaseBMR = CalorieCalculationEngine.calculateBMR(
+            weightInKg: 60.0,
+            heightInCm: 165.0,
+            age: 25,
+            biologicalSex: "FEMALE"
+        )
+        XCTAssertEqual(uppercaseBMR, 1345.25, accuracy: 0.01)
+    }
+
+    func testExtremeBodyMetricsCalculations() {
+        // Extreme heavyweight & tall (e.g. 200kg, 220cm, 20yo male)
+        let highBMR = CalorieCalculationEngine.calculateBMR(
+            weightInKg: 200.0,
+            heightInCm: 220.0,
+            age: 20,
+            biologicalSex: .male
+        )
+        // (10 * 200) + (6.25 * 220) - (5 * 20) + 5 = 2000 + 1375 - 100 + 5 = 3280
+        XCTAssertEqual(highBMR, 3280.0, accuracy: 0.01)
+
+        // Extreme light/short (e.g. 35kg, 130cm, 75yo female)
+        let lowBMR = CalorieCalculationEngine.calculateBMR(
+            weightInKg: 35.0,
+            heightInCm: 130.0,
+            age: 75,
+            biologicalSex: .female
+        )
+        // (10 * 35) + (6.25 * 130) - (5 * 75) - 161 = 350 + 812.5 - 375 - 161 = 626.5
+        XCTAssertEqual(lowBMR, 626.5, accuracy: 0.01)
+    }
+
+    func testMacroSplitPercentagesAutoNormalization() {
+        // When percentages sum up to 100 in whole numbers (e.g. 40, 40, 20)
+        let splitWhole = MacroSplit(proteinPercentage: 40, carbsPercentage: 40, fatPercentage: 20)
+        let targets = CalorieCalculationEngine.calculateMacroTargets(totalCalories: 2000, split: splitWhole)
+        XCTAssertEqual(targets.proteinGrams, 200.0, accuracy: 0.01)
+        XCTAssertEqual(targets.carbsGrams, 200.0, accuracy: 0.01)
+        XCTAssertEqual(targets.fatGrams, 44.44, accuracy: 0.1)
+
+        // When percentages sum up to 1.0 in decimals (0.4, 0.4, 0.2)
+        let splitDecimal = MacroSplit(proteinPercentage: 0.4, carbsPercentage: 0.4, fatPercentage: 0.2)
+        let targetsDecimal = CalorieCalculationEngine.calculateMacroTargets(totalCalories: 2000, split: splitDecimal)
+        XCTAssertEqual(targetsDecimal.proteinGrams, 200.0, accuracy: 0.01)
+        XCTAssertEqual(targetsDecimal.carbsGrams, 200.0, accuracy: 0.01)
+        XCTAssertEqual(targetsDecimal.fatGrams, 44.44, accuracy: 0.1)
+    }
 }
