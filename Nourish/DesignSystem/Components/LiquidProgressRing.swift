@@ -17,7 +17,7 @@ struct LiquidProgressRing: View {
                 .stroke(color, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                 .rotationEffect(.degrees(-90))
         }
-        .onChange(of: progress) { newValue in
+        .onChange(of: progress) { oldValue, newValue in
             withAnimation(FluidSprings.standard) {
                 animatedProgress = newValue
             }
