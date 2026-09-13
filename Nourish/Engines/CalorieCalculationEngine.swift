@@ -1,5 +1,4 @@
 import Foundation
-import Nourish // For UserProfile when using types defined in Nourish (though UserProfile is in Models)
 
 // MARK: - Supporting Types
 
