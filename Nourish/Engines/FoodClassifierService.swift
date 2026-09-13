@@ -1,5 +1,11 @@
 import Foundation
 import Vision
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
+import AppKit
+typealias UIImage = NSImage
+#endif
 
 // MARK: - EstimatedFoodCandidate
 
@@ -89,9 +95,15 @@ final class FoodClassifierService: FoodClassifierProtocol {
     init() {}
 
     func classifyPlate(image: UIImage) async throws -> [EstimatedFoodCandidate] {
+        #if canImport(UIKit)
         guard let cgImage = image.cgImage else {
             throw FoodClassifierError.invalidImage
         }
+        #elseif canImport(AppKit)
+        guard let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
+            throw FoodClassifierError.invalidImage
+        }
+        #endif
         return try await classifyPlate(cgImage: cgImage)
     }
 

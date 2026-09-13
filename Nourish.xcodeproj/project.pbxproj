@@ -1,0 +1,685 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		002FD4452F3039B7E785CD2D /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50213617511A707BA614B130 /* DashboardViewModel.swift */; };
+		03800200D073A7EE04A19DD1 /* LocalFoodDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A4F59AE677374FCCAB59D /* LocalFoodDatabase.swift */; };
+		04B66615D0FE9592F3C017BD /* BarcodeScannerOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6941076447B6C898ECE9B1 /* BarcodeScannerOverlay.swift */; };
+		04FB8F7AE2B259424A8CE484 /* DesignSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AA6C3B60B348C0273A7F3 /* DesignSystemTests.swift */; };
+		07DCDE97CB2C195AD061BE28 /* GoalSelectionStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950E15F8F77D92FDEF8B18FF /* GoalSelectionStepView.swift */; };
+		0C13FFED7B26E033EC361984 /* FrostedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77447DFB13A23D5D9B211C0B /* FrostedCard.swift */; };
+		15ECC52F8A7976E93A850A52 /* DashboardAndDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A1B8F8CF9DC7BE0F9DBDEA /* DashboardAndDiaryTests.swift */; };
+		27B7AE2397BBEE6A8020D4DC /* CalorieCalculationEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E63D91D11F4A7E2EF47992A /* CalorieCalculationEngineTests.swift */; };
+		2C3D199DA9D2E7CD7C921E1F /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776F16262A936AE1D2A719DD /* ModelTests.swift */; };
+		3297BDC4D54CF9B39205F438 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC48F8C48AE482AE1F081C9 /* DashboardView.swift */; };
+		417443659F8CF86FD7FB97BB /* AIPlateClassifierOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40929972859EF20BB2B1B1D /* AIPlateClassifierOverlay.swift */; };
+		4D91EF95C6C202CD111D23F2 /* MetricInputStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E1D0CD1FD3242736C7DDF8 /* MetricInputStepView.swift */; };
+		50F6714E95331C12F85AF45D /* NutritionOCRParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C22204F830A345ADB8E1C /* NutritionOCRParserTests.swift */; };
+		55389A13E86DB6749887D35F /* PlanSummaryStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C12144B23E0AD903220B5 /* PlanSummaryStepView.swift */; };
+		5AA01A50C7055621C983E968 /* ManualFoodEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F0AC39FC6FAC9CC778DC6 /* ManualFoodEntryView.swift */; };
+		605A6EE9202E7714F48A2DCD /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D7DB70BF6119A3C1FA1EE2 /* OnboardingFlowView.swift */; };
+		617778A8EBD4A34D94559A43 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE4E16C3F2D17F1925150C7 /* FoodItem.swift */; };
+		67523EB635D10952BCA0E040 /* MacroPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8FD419E23C65A85C5959BC /* MacroPillView.swift */; };
+		68E97827B620A0B3F9994935 /* DailyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D0F1DEC1A087F4E8692EBB /* DailyLog.swift */; };
+		697E5505FCF1992945BDBA7C /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C54AF125D97185A8A5652 /* HealthKitService.swift */; };
+		6C66CA299277037BA79EBC0A /* UnifiedScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D2D54FC025175646726511 /* UnifiedScannerView.swift */; };
+		701EC203653CA3412A717438 /* NourishApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E192B1961B5545512851D45D /* NourishApp.swift */; };
+		761D151CCD7A0BD3DA5EB0F0 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC743878F2A0E73BB75CF2 /* HapticFeedback.swift */; };
+		867A78E73642E60C92ECAE16 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B3F691BEFA267B83BEFEC /* UserProfile.swift */; };
+		88028893FE520800D42DEC7B /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633366D2EA966259150D919F /* DiaryView.swift */; };
+		89780870FE470DA4250B523D /* BarcodeScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0041DF99A08E10BC6862E2 /* BarcodeScannerViewModel.swift */; };
+		8FED85B88DFA0502B96F72BE /* OCRLabelScannerOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC81E7E6FC8635AFFF8A7B94 /* OCRLabelScannerOverlay.swift */; };
+		949845EBC9BD20F05F66181B /* LiquidProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4023F8F77C1CF09025C428 /* LiquidProgressRing.swift */; };
+		991D26921B6EBBD72E75A024 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE2221FA243AAD8AEBFD8F /* DiaryViewModel.swift */; };
+		995A1C6D2D1FFD1358F006AC /* OpenFoodFactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE781E351EFDE534D81724AE /* OpenFoodFactsService.swift */; };
+		9E9D2E99C185C0EB86EE84EB /* MealType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C5C762B202618B14DDE1DC /* MealType.swift */; };
+		A713D68F8065ED590C09AD91 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016C6BDFB8C873E2462E94A3 /* ViewExtensions.swift */; };
+		A7F6D0966BEA0222C58C483E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E249CF350F05671B14F2B /* MainTabView.swift */; };
+		AA06E7F19B208C71524B6B1C /* FluidSprings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59C94C2DA74603D3C5E47 /* FluidSprings.swift */; };
+		AAA4E83FE5C211D59290D6E9 /* ThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D609E18D393E77E5EA1D1FD1 /* ThemeColors.swift */; };
+		B44919D4E1B1C5D76305837A /* CameraPreviewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3285746940896D4DDF92FF0 /* CameraPreviewRepresentable.swift */; };
+		B5EE510431741D5F9FBAD4DD /* FoodClassifierService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9881CC716562D29191C73292 /* FoodClassifierService.swift */; };
+		B8E53FDED442BDED1BB03C16 /* OCRScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEEFC34BB0EA682FEFF7669 /* OCRScannerViewModel.swift */; };
+		BCA87F5DE7389D477FABEDF3 /* HealthKitServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF127A879DC27CF4DEE8056 /* HealthKitServiceTests.swift */; };
+		BF89166C0D192AE507D9EF36 /* ScannerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D3B2D5995C202C6A575058 /* ScannerMode.swift */; };
+		C7F0BB2672296CAABD12DEF6 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F026E3244EFAFBF627A8C0 /* IntegrationTests.swift */; };
+		D2204320D1202A28C019571E /* CalorieCalculationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FE24C0F398E9E0589EED3E /* CalorieCalculationEngine.swift */; };
+		D4610E2E6A36AE0F8332A4E4 /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E275B3F84BF9DD4E5656C4 /* OnboardingViewModelTests.swift */; };
+		D77EBA65D2CC4078CC2BD0AD /* OpenFoodFactsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5AA74B12A164468413C6FE /* OpenFoodFactsServiceTests.swift */; };
+		DC586B793A3F13D225A3A35A /* FoodDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBB49B72DCF38ED9E22642 /* FoodDetailSheet.swift */; };
+		DF7940D1CC76DB85CF4C7B6A /* ScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907639BCA77E83C87073AC1 /* ScannerUITests.swift */; };
+		E6B1EBB219255CF90CA9E90F /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE56ED367B336EE8CFB559 /* OnboardingViewModel.swift */; };
+		EF3344D3808192517E2A83A4 /* AIPlateScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB5F10DA3B1FA679DAE5F9 /* AIPlateScannerViewModel.swift */; };
+		F1C40A958B985E649CF2F2D2 /* ParsedNutritionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF94C41D8369CC3BAFA2789 /* ParsedNutritionData.swift */; };
+		F5D730BEB1E77C797CA4DCAE /* FoodClassifierServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F98D64A6A9D60989531F9 /* FoodClassifierServiceTests.swift */; };
+		FFB3930260B90F3909362D91 /* NutritionOCRParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC4161A964DF952A450BE56 /* NutritionOCRParser.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		25998714ABA50E4BD30E3099 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2FA72DDBFADCFD0F1F929FAD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9331643940BA8D9885E623AE;
+			remoteInfo = Nourish;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		016C6BDFB8C873E2462E94A3 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		02E1D0CD1FD3242736C7DDF8 /* MetricInputStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricInputStepView.swift; sourceTree = "<group>"; };
+		0E63D91D11F4A7E2EF47992A /* CalorieCalculationEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCalculationEngineTests.swift; sourceTree = "<group>"; };
+		16D3B2D5995C202C6A575058 /* ScannerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerMode.swift; sourceTree = "<group>"; };
+		176DB8886F8D1971871F6DBA /* Nourish.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Nourish.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		186E249CF350F05671B14F2B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		195AA6C3B60B348C0273A7F3 /* DesignSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystemTests.swift; sourceTree = "<group>"; };
+		23FE24C0F398E9E0589EED3E /* CalorieCalculationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCalculationEngine.swift; sourceTree = "<group>"; };
+		25A1B8F8CF9DC7BE0F9DBDEA /* DashboardAndDiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardAndDiaryTests.swift; sourceTree = "<group>"; };
+		2CC48F8C48AE482AE1F081C9 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		2E8B431D43865A914CF770DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2FC4161A964DF952A450BE56 /* NutritionOCRParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionOCRParser.swift; sourceTree = "<group>"; };
+		41CE56ED367B336EE8CFB559 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		475B3F691BEFA267B83BEFEC /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		477C12144B23E0AD903220B5 /* PlanSummaryStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanSummaryStepView.swift; sourceTree = "<group>"; };
+		4FEC743878F2A0E73BB75CF2 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
+		50213617511A707BA614B130 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		56DE2221FA243AAD8AEBFD8F /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
+		5907639BCA77E83C87073AC1 /* ScannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerUITests.swift; sourceTree = "<group>"; };
+		5BA59C94C2DA74603D3C5E47 /* FluidSprings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluidSprings.swift; sourceTree = "<group>"; };
+		5E0041DF99A08E10BC6862E2 /* BarcodeScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewModel.swift; sourceTree = "<group>"; };
+		61C5C762B202618B14DDE1DC /* MealType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealType.swift; sourceTree = "<group>"; };
+		633366D2EA966259150D919F /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
+		64CB5F10DA3B1FA679DAE5F9 /* AIPlateScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIPlateScannerViewModel.swift; sourceTree = "<group>"; };
+		64D2D54FC025175646726511 /* UnifiedScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedScannerView.swift; sourceTree = "<group>"; };
+		76D0F1DEC1A087F4E8692EBB /* DailyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLog.swift; sourceTree = "<group>"; };
+		77447DFB13A23D5D9B211C0B /* FrostedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrostedCard.swift; sourceTree = "<group>"; };
+		776F16262A936AE1D2A719DD /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		7AE4E16C3F2D17F1925150C7 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
+		8CF127A879DC27CF4DEE8056 /* HealthKitServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitServiceTests.swift; sourceTree = "<group>"; };
+		8CF94C41D8369CC3BAFA2789 /* ParsedNutritionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsedNutritionData.swift; sourceTree = "<group>"; };
+		8F4023F8F77C1CF09025C428 /* LiquidProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidProgressRing.swift; sourceTree = "<group>"; };
+		93F026E3244EFAFBF627A8C0 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		950E15F8F77D92FDEF8B18FF /* GoalSelectionStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectionStepView.swift; sourceTree = "<group>"; };
+		97DE7FCD2DE007DED13C40B8 /* NourishTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = NourishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9881CC716562D29191C73292 /* FoodClassifierService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodClassifierService.swift; sourceTree = "<group>"; };
+		9A8F0AC39FC6FAC9CC778DC6 /* ManualFoodEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualFoodEntryView.swift; sourceTree = "<group>"; };
+		9D7C54AF125D97185A8A5652 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
+		9FEEFC34BB0EA682FEFF7669 /* OCRScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRScannerViewModel.swift; sourceTree = "<group>"; };
+		A4D7DB70BF6119A3C1FA1EE2 /* OnboardingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowView.swift; sourceTree = "<group>"; };
+		A7E275B3F84BF9DD4E5656C4 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
+		AE781E351EFDE534D81724AE /* OpenFoodFactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsService.swift; sourceTree = "<group>"; };
+		BE6941076447B6C898ECE9B1 /* BarcodeScannerOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerOverlay.swift; sourceTree = "<group>"; };
+		C40929972859EF20BB2B1B1D /* AIPlateClassifierOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIPlateClassifierOverlay.swift; sourceTree = "<group>"; };
+		C80F98D64A6A9D60989531F9 /* FoodClassifierServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodClassifierServiceTests.swift; sourceTree = "<group>"; };
+		CCDBB49B72DCF38ED9E22642 /* FoodDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailSheet.swift; sourceTree = "<group>"; };
+		D3285746940896D4DDF92FF0 /* CameraPreviewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewRepresentable.swift; sourceTree = "<group>"; };
+		D609E18D393E77E5EA1D1FD1 /* ThemeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColors.swift; sourceTree = "<group>"; };
+		DC8FD419E23C65A85C5959BC /* MacroPillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroPillView.swift; sourceTree = "<group>"; };
+		DE5AA74B12A164468413C6FE /* OpenFoodFactsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsServiceTests.swift; sourceTree = "<group>"; };
+		E18A4F59AE677374FCCAB59D /* LocalFoodDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFoodDatabase.swift; sourceTree = "<group>"; };
+		E192B1961B5545512851D45D /* NourishApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NourishApp.swift; sourceTree = "<group>"; };
+		E28438C5E4CB8B77E38D13FD /* Nourish.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nourish.entitlements; sourceTree = "<group>"; };
+		EA8C22204F830A345ADB8E1C /* NutritionOCRParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionOCRParserTests.swift; sourceTree = "<group>"; };
+		FC81E7E6FC8635AFFF8A7B94 /* OCRLabelScannerOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRLabelScannerOverlay.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0D3EB491D8A94F3A9270ADE0 /* Nourish */ = {
+			isa = PBXGroup;
+			children = (
+				2E8B431D43865A914CF770DB /* Info.plist */,
+				E28438C5E4CB8B77E38D13FD /* Nourish.entitlements */,
+				E192B1961B5545512851D45D /* NourishApp.swift */,
+				BFF115CF2591EBB45C994C39 /* DesignSystem */,
+				578C961813C9A03C375A8981 /* Engines */,
+				CC4E4C0F6465DEB86325E932 /* Models */,
+				FD533942A12F191616C55E9C /* ViewModels */,
+				198116A38B841F7C6E4CFC3C /* Views */,
+			);
+			path = Nourish;
+			sourceTree = "<group>";
+		};
+		185F994C335E3ED7EF043FEA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				77447DFB13A23D5D9B211C0B /* FrostedCard.swift */,
+				8F4023F8F77C1CF09025C428 /* LiquidProgressRing.swift */,
+				DC8FD419E23C65A85C5959BC /* MacroPillView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		198116A38B841F7C6E4CFC3C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				186E249CF350F05671B14F2B /* MainTabView.swift */,
+				016C6BDFB8C873E2462E94A3 /* ViewExtensions.swift */,
+				506FE564D3581EF9FD807F14 /* Dashboard */,
+				8E3C6F5DE0F6C4022CCA7EC0 /* Diary */,
+				FBD9E74853F60C812578F7C8 /* Onboarding */,
+				F5517EA5CE1E49F7878E1470 /* Scanner */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		506FE564D3581EF9FD807F14 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				2CC48F8C48AE482AE1F081C9 /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		578C961813C9A03C375A8981 /* Engines */ = {
+			isa = PBXGroup;
+			children = (
+				23FE24C0F398E9E0589EED3E /* CalorieCalculationEngine.swift */,
+				9881CC716562D29191C73292 /* FoodClassifierService.swift */,
+				9D7C54AF125D97185A8A5652 /* HealthKitService.swift */,
+				E18A4F59AE677374FCCAB59D /* LocalFoodDatabase.swift */,
+				2FC4161A964DF952A450BE56 /* NutritionOCRParser.swift */,
+				AE781E351EFDE534D81724AE /* OpenFoodFactsService.swift */,
+			);
+			path = Engines;
+			sourceTree = "<group>";
+		};
+		6C7453D36F30D91678D94FCB = {
+			isa = PBXGroup;
+			children = (
+				0D3EB491D8A94F3A9270ADE0 /* Nourish */,
+				CA1E46F88AB0CDB24761A718 /* NourishTests */,
+				B6FA0DEA3D68E6A66F01C0FA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8E3C6F5DE0F6C4022CCA7EC0 /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				633366D2EA966259150D919F /* DiaryView.swift */,
+				CCDBB49B72DCF38ED9E22642 /* FoodDetailSheet.swift */,
+				9A8F0AC39FC6FAC9CC778DC6 /* ManualFoodEntryView.swift */,
+			);
+			path = Diary;
+			sourceTree = "<group>";
+		};
+		B6FA0DEA3D68E6A66F01C0FA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				176DB8886F8D1971871F6DBA /* Nourish.app */,
+				97DE7FCD2DE007DED13C40B8 /* NourishTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BFF115CF2591EBB45C994C39 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				5BA59C94C2DA74603D3C5E47 /* FluidSprings.swift */,
+				4FEC743878F2A0E73BB75CF2 /* HapticFeedback.swift */,
+				D609E18D393E77E5EA1D1FD1 /* ThemeColors.swift */,
+				185F994C335E3ED7EF043FEA /* Components */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		CA1E46F88AB0CDB24761A718 /* NourishTests */ = {
+			isa = PBXGroup;
+			children = (
+				0E63D91D11F4A7E2EF47992A /* CalorieCalculationEngineTests.swift */,
+				25A1B8F8CF9DC7BE0F9DBDEA /* DashboardAndDiaryTests.swift */,
+				195AA6C3B60B348C0273A7F3 /* DesignSystemTests.swift */,
+				C80F98D64A6A9D60989531F9 /* FoodClassifierServiceTests.swift */,
+				8CF127A879DC27CF4DEE8056 /* HealthKitServiceTests.swift */,
+				93F026E3244EFAFBF627A8C0 /* IntegrationTests.swift */,
+				776F16262A936AE1D2A719DD /* ModelTests.swift */,
+				EA8C22204F830A345ADB8E1C /* NutritionOCRParserTests.swift */,
+				A7E275B3F84BF9DD4E5656C4 /* OnboardingViewModelTests.swift */,
+				DE5AA74B12A164468413C6FE /* OpenFoodFactsServiceTests.swift */,
+				5907639BCA77E83C87073AC1 /* ScannerUITests.swift */,
+			);
+			path = NourishTests;
+			sourceTree = "<group>";
+		};
+		CC4E4C0F6465DEB86325E932 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				76D0F1DEC1A087F4E8692EBB /* DailyLog.swift */,
+				7AE4E16C3F2D17F1925150C7 /* FoodItem.swift */,
+				61C5C762B202618B14DDE1DC /* MealType.swift */,
+				8CF94C41D8369CC3BAFA2789 /* ParsedNutritionData.swift */,
+				16D3B2D5995C202C6A575058 /* ScannerMode.swift */,
+				475B3F691BEFA267B83BEFEC /* UserProfile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F5517EA5CE1E49F7878E1470 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				C40929972859EF20BB2B1B1D /* AIPlateClassifierOverlay.swift */,
+				BE6941076447B6C898ECE9B1 /* BarcodeScannerOverlay.swift */,
+				D3285746940896D4DDF92FF0 /* CameraPreviewRepresentable.swift */,
+				FC81E7E6FC8635AFFF8A7B94 /* OCRLabelScannerOverlay.swift */,
+				64D2D54FC025175646726511 /* UnifiedScannerView.swift */,
+			);
+			path = Scanner;
+			sourceTree = "<group>";
+		};
+		FBD9E74853F60C812578F7C8 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				950E15F8F77D92FDEF8B18FF /* GoalSelectionStepView.swift */,
+				02E1D0CD1FD3242736C7DDF8 /* MetricInputStepView.swift */,
+				A4D7DB70BF6119A3C1FA1EE2 /* OnboardingFlowView.swift */,
+				477C12144B23E0AD903220B5 /* PlanSummaryStepView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		FD533942A12F191616C55E9C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				64CB5F10DA3B1FA679DAE5F9 /* AIPlateScannerViewModel.swift */,
+				5E0041DF99A08E10BC6862E2 /* BarcodeScannerViewModel.swift */,
+				50213617511A707BA614B130 /* DashboardViewModel.swift */,
+				56DE2221FA243AAD8AEBFD8F /* DiaryViewModel.swift */,
+				9FEEFC34BB0EA682FEFF7669 /* OCRScannerViewModel.swift */,
+				41CE56ED367B336EE8CFB559 /* OnboardingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		648F92B2AF22C9BD000F73E1 /* NourishTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C2E20D8F041C8568E408709 /* Build configuration list for PBXNativeTarget "NourishTests" */;
+			buildPhases = (
+				11BEE4FEB7037CCD18896B7B /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				040A82F9125CE6912290B0E1 /* PBXTargetDependency */,
+			);
+			name = NourishTests;
+			packageProductDependencies = (
+			);
+			productName = NourishTests;
+			productReference = 97DE7FCD2DE007DED13C40B8 /* NourishTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9331643940BA8D9885E623AE /* Nourish */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53167B25A3D6EED0E04D46A9 /* Build configuration list for PBXNativeTarget "Nourish" */;
+			buildPhases = (
+				552EE1A8B7EA99EEA87987E2 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nourish;
+			packageProductDependencies = (
+			);
+			productName = Nourish;
+			productReference = 176DB8886F8D1971871F6DBA /* Nourish.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2FA72DDBFADCFD0F1F929FAD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 70A5CD8CDCB068E9B289C2B1 /* Build configuration list for PBXProject "Nourish" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 6C7453D36F30D91678D94FCB;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B6FA0DEA3D68E6A66F01C0FA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9331643940BA8D9885E623AE /* Nourish */,
+				648F92B2AF22C9BD000F73E1 /* NourishTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		11BEE4FEB7037CCD18896B7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B7AE2397BBEE6A8020D4DC /* CalorieCalculationEngineTests.swift in Sources */,
+				15ECC52F8A7976E93A850A52 /* DashboardAndDiaryTests.swift in Sources */,
+				04FB8F7AE2B259424A8CE484 /* DesignSystemTests.swift in Sources */,
+				F5D730BEB1E77C797CA4DCAE /* FoodClassifierServiceTests.swift in Sources */,
+				BCA87F5DE7389D477FABEDF3 /* HealthKitServiceTests.swift in Sources */,
+				C7F0BB2672296CAABD12DEF6 /* IntegrationTests.swift in Sources */,
+				2C3D199DA9D2E7CD7C921E1F /* ModelTests.swift in Sources */,
+				50F6714E95331C12F85AF45D /* NutritionOCRParserTests.swift in Sources */,
+				D4610E2E6A36AE0F8332A4E4 /* OnboardingViewModelTests.swift in Sources */,
+				D77EBA65D2CC4078CC2BD0AD /* OpenFoodFactsServiceTests.swift in Sources */,
+				DF7940D1CC76DB85CF4C7B6A /* ScannerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		552EE1A8B7EA99EEA87987E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				417443659F8CF86FD7FB97BB /* AIPlateClassifierOverlay.swift in Sources */,
+				EF3344D3808192517E2A83A4 /* AIPlateScannerViewModel.swift in Sources */,
+				04B66615D0FE9592F3C017BD /* BarcodeScannerOverlay.swift in Sources */,
+				89780870FE470DA4250B523D /* BarcodeScannerViewModel.swift in Sources */,
+				D2204320D1202A28C019571E /* CalorieCalculationEngine.swift in Sources */,
+				B44919D4E1B1C5D76305837A /* CameraPreviewRepresentable.swift in Sources */,
+				68E97827B620A0B3F9994935 /* DailyLog.swift in Sources */,
+				3297BDC4D54CF9B39205F438 /* DashboardView.swift in Sources */,
+				002FD4452F3039B7E785CD2D /* DashboardViewModel.swift in Sources */,
+				88028893FE520800D42DEC7B /* DiaryView.swift in Sources */,
+				991D26921B6EBBD72E75A024 /* DiaryViewModel.swift in Sources */,
+				AA06E7F19B208C71524B6B1C /* FluidSprings.swift in Sources */,
+				B5EE510431741D5F9FBAD4DD /* FoodClassifierService.swift in Sources */,
+				DC586B793A3F13D225A3A35A /* FoodDetailSheet.swift in Sources */,
+				617778A8EBD4A34D94559A43 /* FoodItem.swift in Sources */,
+				0C13FFED7B26E033EC361984 /* FrostedCard.swift in Sources */,
+				07DCDE97CB2C195AD061BE28 /* GoalSelectionStepView.swift in Sources */,
+				761D151CCD7A0BD3DA5EB0F0 /* HapticFeedback.swift in Sources */,
+				697E5505FCF1992945BDBA7C /* HealthKitService.swift in Sources */,
+				949845EBC9BD20F05F66181B /* LiquidProgressRing.swift in Sources */,
+				03800200D073A7EE04A19DD1 /* LocalFoodDatabase.swift in Sources */,
+				67523EB635D10952BCA0E040 /* MacroPillView.swift in Sources */,
+				A7F6D0966BEA0222C58C483E /* MainTabView.swift in Sources */,
+				5AA01A50C7055621C983E968 /* ManualFoodEntryView.swift in Sources */,
+				9E9D2E99C185C0EB86EE84EB /* MealType.swift in Sources */,
+				4D91EF95C6C202CD111D23F2 /* MetricInputStepView.swift in Sources */,
+				701EC203653CA3412A717438 /* NourishApp.swift in Sources */,
+				FFB3930260B90F3909362D91 /* NutritionOCRParser.swift in Sources */,
+				8FED85B88DFA0502B96F72BE /* OCRLabelScannerOverlay.swift in Sources */,
+				B8E53FDED442BDED1BB03C16 /* OCRScannerViewModel.swift in Sources */,
+				605A6EE9202E7714F48A2DCD /* OnboardingFlowView.swift in Sources */,
+				E6B1EBB219255CF90CA9E90F /* OnboardingViewModel.swift in Sources */,
+				995A1C6D2D1FFD1358F006AC /* OpenFoodFactsService.swift in Sources */,
+				F1C40A958B985E649CF2F2D2 /* ParsedNutritionData.swift in Sources */,
+				55389A13E86DB6749887D35F /* PlanSummaryStepView.swift in Sources */,
+				BF89166C0D192AE507D9EF36 /* ScannerMode.swift in Sources */,
+				AAA4E83FE5C211D59290D6E9 /* ThemeColors.swift in Sources */,
+				6C66CA299277037BA79EBC0A /* UnifiedScannerView.swift in Sources */,
+				867A78E73642E60C92ECAE16 /* UserProfile.swift in Sources */,
+				A713D68F8065ED590C09AD91 /* ViewExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		040A82F9125CE6912290B0E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9331643940BA8D9885E623AE /* Nourish */;
+			targetProxy = 25998714ABA50E4BD30E3099 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5833A47E5BA8F6AE024AA81B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_ENTITLEMENTS = Nourish/Nourish.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Nourish/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nourish.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		69EB9AB6DEC1B3D4503CC25E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nourish.app.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nourish.app/Nourish";
+			};
+			name = Debug;
+		};
+		A1989D69B1F3AAD41F107A69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A98F1B9862453195F301394A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CABA7968FC45C7B61D44D03C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_ENTITLEMENTS = Nourish/Nourish.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Nourish/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nourish.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDDB6E0679BC8A8CF655D518 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nourish.app.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nourish.app/Nourish";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		53167B25A3D6EED0E04D46A9 /* Build configuration list for PBXNativeTarget "Nourish" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CABA7968FC45C7B61D44D03C /* Debug */,
+				5833A47E5BA8F6AE024AA81B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		70A5CD8CDCB068E9B289C2B1 /* Build configuration list for PBXProject "Nourish" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A98F1B9862453195F301394A /* Debug */,
+				A1989D69B1F3AAD41F107A69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7C2E20D8F041C8568E408709 /* Build configuration list for PBXNativeTarget "NourishTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69EB9AB6DEC1B3D4503CC25E /* Debug */,
+				EDDB6E0679BC8A8CF655D518 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2FA72DDBFADCFD0F1F929FAD /* Project object */;
+}
