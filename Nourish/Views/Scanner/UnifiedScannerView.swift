@@ -13,6 +13,7 @@ struct UnifiedScannerView: View {
     @State var barcodeViewModel = BarcodeScannerViewModel()
     @State var ocrViewModel = OCRScannerViewModel()
     @State var plateViewModel = AIPlateScannerViewModel()
+    @State private var pendingFoodItems: [FoodItem] = []
 
     init(
         selectedMode: ScannerMode = .barcode,
@@ -88,6 +89,35 @@ struct UnifiedScannerView: View {
         }
         .onChange(of: selectedMode) { _, newMode in
             handleModeChange(newMode)
+        }
+        .sheet(item: Binding<FoodItem?>(
+            get: { self.pendingFoodItems.first },
+            set: { newValue in
+                if newValue == nil && !self.pendingFoodItems.isEmpty {
+                    // This happens if the sheet is dismissed without saving.
+                    // We discard the item and move on to the next.
+                    self.pendingFoodItems.removeFirst()
+                }
+            }
+        )) { item in
+            ManualFoodEntryView(prefilledItem: item, initialMealType: item.mealType) { updatedItem in
+                // Successfully confirmed portion!
+                if let onLogFood {
+                    onLogFood(updatedItem)
+                } else if let onLogFoods {
+                    onLogFoods([updatedItem]) // log one by one to original caller
+                }
+
+                // Remove the one we just processed
+                if !self.pendingFoodItems.isEmpty {
+                    self.pendingFoodItems.removeFirst()
+                }
+
+                // If nothing left, we are done tracking here.
+                if self.pendingFoodItems.isEmpty {
+                    dismiss()
+                }
+            }
         }
     }
 
@@ -241,18 +271,10 @@ struct UnifiedScannerView: View {
     }
 
     private func handleLogFood(_ item: FoodItem) {
-        onLogFood?(item)
-        dismiss()
+        pendingFoodItems.append(item)
     }
 
     private func handleLogFoods(_ items: [FoodItem]) {
-        if let onLogFoods {
-            onLogFoods(items)
-        } else if let onLogFood {
-            for item in items {
-                onLogFood(item)
-            }
-        }
-        dismiss()
+        pendingFoodItems.append(contentsOf: items)
     }
 }

@@ -34,6 +34,18 @@ struct LocalFoodItem: Identifiable, Equatable, Sendable {
     }
 }
 
+struct MFPFoodEntry: Codable {
+    let name: String
+    let calories: Double
+    let proteinGrams: Double
+    let carbsGrams: Double
+    let fatGrams: Double
+    let servingGrams: Double
+    let defaultServingUnit: String?
+    let defaultServingQuantity: Double?
+    let multiplier: Double?
+}
+
 enum LocalFoodDatabase {
     private static let catalog: [LocalFoodItem] = [
         LocalFoodItem(
@@ -405,11 +417,260 @@ enum LocalFoodDatabase {
             carbsGrams: 13,
             fatGrams: 12,
             servingDescription: "30g"
+        ),
+        LocalFoodItem(
+            name: "Roti",
+            keywords: ["roti", "chapati", "phulka", "indian bread", "flatbread", "wheat roti", "rotis"],
+            servingGrams: 40,
+            calories: 104,
+            proteinGrams: 3.1,
+            carbsGrams: 20,
+            fatGrams: 0.5,
+            servingDescription: "1 Piece (40g)"
+        ),
+        LocalFoodItem(
+            name: "Dal Tadka",
+            keywords: ["dal", "dal tadka", "yellow dal", "toor dal", "moong dal", "lentil soup", "daal", "dhal", "tadka dal"],
+            servingGrams: 150,
+            calories: 150,
+            proteinGrams: 8,
+            carbsGrams: 20,
+            fatGrams: 4.5,
+            servingDescription: "1 Katori (150g)"
+        ),
+        LocalFoodItem(
+            name: "Paneer Butter Masala",
+            keywords: ["paneer butter masala", "paneer makhani", "paneer", "cottage cheese curry", "shahi paneer", "paneer tikka masala"],
+            servingGrams: 180,
+            calories: 320,
+            proteinGrams: 10,
+            carbsGrams: 12,
+            fatGrams: 26,
+            servingDescription: "1 Katori (180g)"
+        ),
+        LocalFoodItem(
+            name: "Palak Paneer",
+            keywords: ["palak paneer", "saag paneer", "spinach paneer", "cottage cheese spinach"],
+            servingGrams: 180,
+            calories: 240,
+            proteinGrams: 12,
+            carbsGrams: 8,
+            fatGrams: 18,
+            servingDescription: "1 Katori (180g)"
+        ),
+        LocalFoodItem(
+            name: "Chicken Biryani",
+            keywords: ["biryani", "chicken biryani", "dum biryani", "hyderabadi biryani", "biriyani"],
+            servingGrams: 250,
+            calories: 450,
+            proteinGrams: 28,
+            carbsGrams: 52,
+            fatGrams: 14,
+            servingDescription: "1 Plate (250g)"
+        ),
+        LocalFoodItem(
+            name: "Chole",
+            keywords: ["chole", "chana masala", "chickpea curry", "chole masala", "kabuli chana", "chickpeas"],
+            servingGrams: 180,
+            calories: 220,
+            proteinGrams: 10,
+            carbsGrams: 32,
+            fatGrams: 6,
+            servingDescription: "1 Katori (180g)"
+        ),
+        LocalFoodItem(
+            name: "Rajma",
+            keywords: ["rajma", "kidney bean curry", "rajma masala", "rajma chawal"],
+            servingGrams: 180,
+            calories: 210,
+            proteinGrams: 9,
+            carbsGrams: 30,
+            fatGrams: 5,
+            servingDescription: "1 Katori (180g)"
+        ),
+        LocalFoodItem(
+            name: "Idli",
+            keywords: ["idli", "idlis", "steamed rice cake", "south indian idli", "sambhar idli"],
+            servingGrams: 70,
+            calories: 130,
+            proteinGrams: 4,
+            carbsGrams: 26,
+            fatGrams: 0.4,
+            servingDescription: "2 Pieces (70g)"
+        ),
+        LocalFoodItem(
+            name: "Dosa",
+            keywords: ["dosa", "plain dosa", "masala dosa", "crispy dosa", "south indian crepe"],
+            servingGrams: 100,
+            calories: 170,
+            proteinGrams: 4,
+            carbsGrams: 29,
+            fatGrams: 4.5,
+            servingDescription: "1 Piece (100g)"
+        ),
+        LocalFoodItem(
+            name: "Poha",
+            keywords: ["poha", "flattened rice", "kanda poha", "batata poha", "aval"],
+            servingGrams: 150,
+            calories: 230,
+            proteinGrams: 4.5,
+            carbsGrams: 38,
+            fatGrams: 7,
+            servingDescription: "1 Plate (150g)"
+        ),
+        LocalFoodItem(
+            name: "Upma",
+            keywords: ["upma", "rava upma", "sooji upma", "semolina upma"],
+            servingGrams: 150,
+            calories: 210,
+            proteinGrams: 5,
+            carbsGrams: 32,
+            fatGrams: 7,
+            servingDescription: "1 Katori (150g)"
+        ),
+        LocalFoodItem(
+            name: "Samosa",
+            keywords: ["samosa", "samosas", "aloo samosa", "punjabi samosa", "fried samosa"],
+            servingGrams: 80,
+            calories: 260,
+            proteinGrams: 4,
+            carbsGrams: 32,
+            fatGrams: 13,
+            servingDescription: "1 Piece (80g)"
+        ),
+        LocalFoodItem(
+            name: "Curd",
+            keywords: ["curd", "dahi", "plain curd", "yogurt", "indian yogurt", "raita", "plain dahi"],
+            servingGrams: 150,
+            calories: 90,
+            proteinGrams: 5,
+            carbsGrams: 6.5,
+            fatGrams: 4.5,
+            servingDescription: "1 Katori (150g)"
+        ),
+        LocalFoodItem(
+            name: "Khichdi",
+            keywords: ["khichdi", "dal khichdi", "moong dal khichdi", "khichri", "kichadi"],
+            servingGrams: 200,
+            calories: 220,
+            proteinGrams: 7,
+            carbsGrams: 38,
+            fatGrams: 4.5,
+            servingDescription: "1 Bowl (200g)"
+        ),
+        LocalFoodItem(
+            name: "Aloo Gobi",
+            keywords: ["aloo gobi", "alu gobi", "potato cauliflower", "gobi aloo", "cauliflower potato"],
+            servingGrams: 150,
+            calories: 140,
+            proteinGrams: 3.5,
+            carbsGrams: 18,
+            fatGrams: 6.5,
+            servingDescription: "1 Katori (150g)"
+        ),
+        LocalFoodItem(
+            name: "Chicken Tikka",
+            keywords: ["chicken tikka", "tandoori chicken", "chicken kebab", "tandoori tikka", "grilled chicken tikka"],
+            servingGrams: 150,
+            calories: 220,
+            proteinGrams: 32,
+            carbsGrams: 4,
+            fatGrams: 8,
+            servingDescription: "1 Plate (150g)"
+        ),
+        LocalFoodItem(
+            name: "Naan",
+            keywords: ["naan", "butter naan", "garlic naan", "plain naan", "tandoori naan"],
+            servingGrams: 90,
+            calories: 260,
+            proteinGrams: 7.5,
+            carbsGrams: 45,
+            fatGrams: 5.5,
+            servingDescription: "1 Piece (90g)"
+        ),
+        LocalFoodItem(
+            name: "Paratha",
+            keywords: ["paratha", "aloo paratha", "plain paratha", "stuffed paratha", "parotta"],
+            servingGrams: 100,
+            calories: 290,
+            proteinGrams: 6,
+            carbsGrams: 40,
+            fatGrams: 12,
+            servingDescription: "1 Piece (100g)"
+        ),
+        LocalFoodItem(
+            name: "Gulab Jamun",
+            keywords: ["gulab jamun", "gulab jamuns", "indian sweet", "jamun"],
+            servingGrams: 50,
+            calories: 175,
+            proteinGrams: 2.5,
+            carbsGrams: 26,
+            fatGrams: 7,
+            servingDescription: "1 Piece (50g)"
+        ),
+        LocalFoodItem(
+            name: "Masala Chai",
+            keywords: ["chai", "masala chai", "indian tea", "tea with milk", "milk tea"],
+            servingGrams: 150,
+            calories: 110,
+            proteinGrams: 3,
+            carbsGrams: 15,
+            fatGrams: 4,
+            servingDescription: "1 Cup (150ml)"
+        ),
+        LocalFoodItem(
+            name: "Besan Chilla",
+            keywords: ["chilla", "besan chilla", "cheela", "gram flour pancake", "puda"],
+            servingGrams: 80,
+            calories: 160,
+            proteinGrams: 8,
+            carbsGrams: 20,
+            fatGrams: 5.5,
+            servingDescription: "1 Piece (80g)"
+        ),
+        LocalFoodItem(
+            name: "Egg Bhurji",
+            keywords: ["egg bhurji", "anda bhurji", "scrambled eggs indian", "bhurji"],
+            servingGrams: 120,
+            calories: 180,
+            proteinGrams: 13,
+            carbsGrams: 3,
+            fatGrams: 13,
+            servingDescription: "1 Plate (120g)"
         )
     ]
 
+
+    private static let mfpCatalog: [LocalFoodItem] = {
+        let bundles = [Bundle.main, Bundle(for: FoodClassifierService.self)]
+        for bundle in bundles {
+            if let url = bundle.url(forResource: "MFPFoods", withExtension: "json"),
+               let data = try? Data(contentsOf: url),
+               let decoded = try? JSONDecoder().decode([MFPFoodEntry].self, from: data) {
+                return decoded.map { entry in
+                    let desc = entry.defaultServingUnit != nil ? "\(Int(entry.defaultServingQuantity ?? 1)) \(entry.defaultServingUnit!)" : "\(Int(entry.servingGrams))g"
+                    return LocalFoodItem(
+                        name: entry.name,
+                        keywords: [entry.name.lowercased()],
+                        servingGrams: entry.servingGrams,
+                        calories: entry.calories,
+                        proteinGrams: entry.proteinGrams,
+                        carbsGrams: entry.carbsGrams,
+                        fatGrams: entry.fatGrams,
+                        servingDescription: desc
+                    )
+                }
+            }
+        }
+        return []
+    }()
+
+    private static var fullCatalog: [LocalFoodItem] {
+        return catalog + mfpCatalog
+    }
+
     public static func allItems() -> [LocalFoodItem] {
-        return catalog
+        return fullCatalog
     }
 
     public static func find(matching query: String) -> LocalFoodItem? {
@@ -419,32 +680,34 @@ enum LocalFoodDatabase {
 
         guard !cleaned.isEmpty else { return nil }
 
+        let searchSpace = fullCatalog
+
         // 1. Exact item name match
-        if let exactName = catalog.first(where: { $0.name.lowercased() == cleaned }) {
+        if let exactName = searchSpace.first(where: { $0.name.lowercased() == cleaned }) {
             return exactName
         }
 
         // 2. Exact keyword match
-        if let exactKeyword = catalog.first(where: { item in
+        if let exactKeyword = searchSpace.first(where: { item in
             item.keywords.contains { $0.lowercased() == cleaned }
         }) {
             return exactKeyword
         }
 
-        // 3. Name containment
-        if let nameContains = catalog.first(where: { item in
+        // 3. Name containment with word boundary matching
+        if let nameContains = searchSpace.first(where: { item in
             let lowerName = item.name.lowercased()
-            return cleaned.contains(lowerName) || lowerName.contains(cleaned)
+            return matchesWordOrPhrase(cleaned, target: lowerName)
         }) {
             return nameContains
         }
 
-        // 4. Keyword containment - prioritize longest keyword match
+        // 4. Keyword containment with word boundary matching - prioritize longest keyword match
         var bestKeywordMatch: (item: LocalFoodItem, length: Int)? = nil
-        for item in catalog {
+        for item in searchSpace {
             for kw in item.keywords {
                 let kwLower = kw.lowercased()
-                if cleaned.contains(kwLower) || kwLower.contains(cleaned) {
+                if matchesWordOrPhrase(cleaned, target: kwLower) {
                     let length = kwLower.count
                     if bestKeywordMatch == nil || length > (bestKeywordMatch?.length ?? 0) {
                         bestKeywordMatch = (item, length)
@@ -473,7 +736,7 @@ enum LocalFoodDatabase {
         var bestTokenScore = 0
         var bestTokenItem: LocalFoodItem? = nil
 
-        for item in catalog {
+        for item in searchSpace {
             var score = 0
             let itemNameLower = item.name.lowercased()
             let allKeywords = item.keywords.map { $0.lowercased() }
@@ -500,5 +763,29 @@ enum LocalFoodDatabase {
         }
 
         return nil
+    }
+
+    private static func matchesWordOrPhrase(_ query: String, target: String) -> Bool {
+        if query == target { return true }
+
+        // Fast checks before regex
+        if query.count < target.count {
+            // Check if query is a whole word in target
+            if let regex = try? NSRegularExpression(pattern: "\\b" + NSRegularExpression.escapedPattern(for: query) + "\\b", options: [.caseInsensitive]) {
+                let range = NSRange(location: 0, length: target.utf16.count)
+                if regex.firstMatch(in: target, options: [], range: range) != nil {
+                    return true
+                }
+            }
+        } else {
+            // Check if target is a whole word/phrase in query
+            if let regex = try? NSRegularExpression(pattern: "\\b" + NSRegularExpression.escapedPattern(for: target) + "\\b", options: [.caseInsensitive]) {
+                let range = NSRange(location: 0, length: query.utf16.count)
+                if regex.firstMatch(in: query, options: [], range: range) != nil {
+                    return true
+                }
+            }
+        }
+        return false
     }
 }

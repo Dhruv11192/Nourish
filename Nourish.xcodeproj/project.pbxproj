@@ -16,6 +16,7 @@
 		15ECC52F8A7976E93A850A52 /* DashboardAndDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A1B8F8CF9DC7BE0F9DBDEA /* DashboardAndDiaryTests.swift */; };
 		27B7AE2397BBEE6A8020D4DC /* CalorieCalculationEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E63D91D11F4A7E2EF47992A /* CalorieCalculationEngineTests.swift */; };
 		2C3D199DA9D2E7CD7C921E1F /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776F16262A936AE1D2A719DD /* ModelTests.swift */; };
+		31AFC5975D8F46D61D235AF2 /* MFPFoods.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C4720C5C23C9AEC289707BA /* MFPFoods.json */; };
 		3297BDC4D54CF9B39205F438 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC48F8C48AE482AE1F081C9 /* DashboardView.swift */; };
 		417443659F8CF86FD7FB97BB /* AIPlateClassifierOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40929972859EF20BB2B1B1D /* AIPlateClassifierOverlay.swift */; };
 		4D91EF95C6C202CD111D23F2 /* MetricInputStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E1D0CD1FD3242736C7DDF8 /* MetricInputStepView.swift */; };
@@ -108,6 +109,7 @@
 		97DE7FCD2DE007DED13C40B8 /* NourishTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = NourishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9881CC716562D29191C73292 /* FoodClassifierService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodClassifierService.swift; sourceTree = "<group>"; };
 		9A8F0AC39FC6FAC9CC778DC6 /* ManualFoodEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualFoodEntryView.swift; sourceTree = "<group>"; };
+		9C4720C5C23C9AEC289707BA /* MFPFoods.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MFPFoods.json; sourceTree = "<group>"; };
 		9D7C54AF125D97185A8A5652 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
 		9FEEFC34BB0EA682FEFF7669 /* OCRScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRScannerViewModel.swift; sourceTree = "<group>"; };
 		A4D7DB70BF6119A3C1FA1EE2 /* OnboardingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowView.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				76D0F1DEC1A087F4E8692EBB /* DailyLog.swift */,
 				7AE4E16C3F2D17F1925150C7 /* FoodItem.swift */,
 				61C5C762B202618B14DDE1DC /* MealType.swift */,
+				9C4720C5C23C9AEC289707BA /* MFPFoods.json */,
 				8CF94C41D8369CC3BAFA2789 /* ParsedNutritionData.swift */,
 				16D3B2D5995C202C6A575058 /* ScannerMode.swift */,
 				475B3F691BEFA267B83BEFEC /* UserProfile.swift */,
@@ -320,6 +323,7 @@
 			buildConfigurationList = 53167B25A3D6EED0E04D46A9 /* Build configuration list for PBXNativeTarget "Nourish" */;
 			buildPhases = (
 				552EE1A8B7EA99EEA87987E2 /* Sources */,
+				3D3369DD6EF2056B4A2FD9EE /* Resources */,
 			);
 			buildRules = (
 			);
@@ -362,6 +366,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D3369DD6EF2056B4A2FD9EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31AFC5975D8F46D61D235AF2 /* MFPFoods.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		11BEE4FEB7037CCD18896B7B /* Sources */ = {

@@ -16,17 +16,22 @@ struct FoodDetailSheet: View {
     @State private var carbs: String = ""
     @State private var fat: String = ""
     @State private var mealType: MealType = .snack
+    @State private var servingUnitName: String = "Serving"
+    @State private var servingQuantity: Double = 1.0
+    @State private var autoCalculateCalories: Bool = true
 
     init(foodItem: FoodItem, onDelete: (() -> Void)? = nil) {
         self.foodItem = foodItem
         self.onDelete = onDelete
         self._name = State(initialValue: foodItem.name)
         self._brand = State(initialValue: foodItem.brand ?? "")
-        self._calories = State(initialValue: String(format: "%.0f", foodItem.calories))
-        self._protein = State(initialValue: String(format: "%.1f", foodItem.proteinGrams))
-        self._carbs = State(initialValue: String(format: "%.1f", foodItem.carbsGrams))
-        self._fat = State(initialValue: String(format: "%.1f", foodItem.fatGrams))
+        self._calories = State(initialValue: String(format: "%.0f", foodItem.baseCalories ?? (foodItem.servingQuantity != nil && foodItem.servingQuantity! > 0 ? foodItem.calories / foodItem.servingQuantity! : foodItem.calories)))
+        self._protein = State(initialValue: String(format: "%.1f", foodItem.baseProteinGrams ?? (foodItem.servingQuantity != nil && foodItem.servingQuantity! > 0 ? foodItem.proteinGrams / foodItem.servingQuantity! : foodItem.proteinGrams)))
+        self._carbs = State(initialValue: String(format: "%.1f", foodItem.baseCarbsGrams ?? (foodItem.servingQuantity != nil && foodItem.servingQuantity! > 0 ? foodItem.carbsGrams / foodItem.servingQuantity! : foodItem.carbsGrams)))
+        self._fat = State(initialValue: String(format: "%.1f", foodItem.baseFatGrams ?? (foodItem.servingQuantity != nil && foodItem.servingQuantity! > 0 ? foodItem.fatGrams / foodItem.servingQuantity! : foodItem.fatGrams)))
         self._mealType = State(initialValue: foodItem.mealType)
+        self._servingUnitName = State(initialValue: foodItem.servingUnitName ?? "Serving")
+        self._servingQuantity = State(initialValue: foodItem.servingQuantity ?? 1.0)
     }
 
     var body: some View {
@@ -85,15 +90,30 @@ struct FoodDetailSheet: View {
                             .foregroundColor(.secondary)
                     }
 
-                    HStack(spacing: 6) {
-                        Image(systemName: foodItem.mealType.iconName)
-                        Text(foodItem.mealType.displayName)
+                    HStack(spacing: 8) {
+                        HStack(spacing: 6) {
+                            Image(systemName: foodItem.mealType.iconName)
+                            Text(foodItem.mealType.displayName)
+                        }
+                        .font(.caption.bold())
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .background(ThemeColors.surfaceBackground)
+                        .clipShape(Capsule())
+
+                        if let qty = foodItem.servingQuantity, let unit = foodItem.servingUnitName {
+                            HStack(spacing: 4) {
+                                Image(systemName: "scalemass.fill")
+                                Text(String(format: "%.1f %@", qty, unit))
+                            }
+                            .font(.caption.bold())
+                            .foregroundColor(ThemeColors.protein)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 4)
+                            .background(ThemeColors.surfaceBackground)
+                            .clipShape(Capsule())
+                        }
                     }
-                    .font(.caption.bold())
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 4)
-                    .background(ThemeColors.surfaceBackground)
-                    .clipShape(Capsule())
                 }
                 .padding(.top)
 
@@ -175,63 +195,143 @@ struct FoodDetailSheet: View {
                 }
             }
 
-            Section("Nutrition") {
+            Section("Serving Size & Quantity") {
+                Picker("Serving Unit", selection: $servingUnitName) {
+                    ForEach(["Serving", "Scoop", "Katori", "Nos", "Piece", "Cup", "Tbsp", "Tsp", "Small", "Medium", "Large", "g", "ml"], id: \.self) { unit in
+                        Text(unit).tag(unit)
+                    }
+                }
+
                 HStack {
-                    Text("Calories")
+                    Text("Number of Servings")
+                    Spacer()
+                    TextField("1.0", value: $servingQuantity, format: .number)
+                        .numericKeyboard()
+                        .multilineTextAlignment(.trailing)
+                        .frame(width: 80)
+                    Stepper("", value: $servingQuantity, in: 0.1...100.0, step: 0.5)
+                        .labelsHidden()
+                }
+            }
+
+            Section {
+                Toggle("Auto-calculate calories from macros", isOn: $autoCalculateCalories)
+
+                HStack {
+                    Text("Base Calories (per 1 \(servingUnitName.lowercased()))")
                     Spacer()
                     TextField("0", text: $calories)
                         .numericKeyboard()
                         .multilineTextAlignment(.trailing)
+                        .disabled(autoCalculateCalories)
+                        .foregroundColor(autoCalculateCalories ? .secondary : .primary)
                     Text("kcal").foregroundColor(.secondary)
                 }
 
                 HStack {
+                    Circle().fill(ThemeColors.protein).frame(width: 8, height: 8)
                     Text("Protein")
                     Spacer()
                     TextField("0", text: $protein)
                         .numericKeyboard()
                         .multilineTextAlignment(.trailing)
+                        .onChange(of: protein) { _, _ in
+                            recalculateCalories()
+                        }
                     Text("g").foregroundColor(.secondary)
                 }
 
                 HStack {
+                    Circle().fill(ThemeColors.carbs).frame(width: 8, height: 8)
                     Text("Carbs")
                     Spacer()
                     TextField("0", text: $carbs)
                         .numericKeyboard()
                         .multilineTextAlignment(.trailing)
+                        .onChange(of: carbs) { _, _ in
+                            recalculateCalories()
+                        }
                     Text("g").foregroundColor(.secondary)
                 }
 
                 HStack {
+                    Circle().fill(ThemeColors.fat).frame(width: 8, height: 8)
                     Text("Fat")
                     Spacer()
                     TextField("0", text: $fat)
                         .numericKeyboard()
                         .multilineTextAlignment(.trailing)
+                        .onChange(of: fat) { _, _ in
+                            recalculateCalories()
+                        }
                     Text("g").foregroundColor(.secondary)
+                }
+            } header: {
+                Text("Nutrition (Per 1 \(servingUnitName))")
+            } footer: {
+                VStack(alignment: .leading, spacing: 4) {
+                    if autoCalculateCalories {
+                        Text("Base Calories = (Protein × 4) + (Carbs × 4) + (Fat × 9)")
+                    }
+                    if servingQuantity != 1.0 {
+                        let totalCal = (Double(calories) ?? 0) * servingQuantity
+                        let totalP = (Double(protein) ?? 0) * servingQuantity
+                        let totalC = (Double(carbs) ?? 0) * servingQuantity
+                        let totalF = (Double(fat) ?? 0) * servingQuantity
+                        Text(String(format: "Total for %.1f %@: %.0f kcal (P: %.1fg, C: %.1fg, F: %.1fg)", servingQuantity, servingUnitName, totalCal, totalP, totalC, totalF))
+                            .font(.footnote)
+                            .foregroundColor(ThemeColors.protein)
+                    }
                 }
             }
         }
     }
 
+    private func recalculateCalories() {
+        guard autoCalculateCalories else { return }
+        let p = Double(protein) ?? 0
+        let c = Double(carbs) ?? 0
+        let f = Double(fat) ?? 0
+        let total = (p * 4.0) + (c * 4.0) + (f * 9.0)
+        calories = String(format: "%.0f", total)
+    }
+
     private func loadCurrentValues() {
         name = foodItem.name
         brand = foodItem.brand ?? ""
-        calories = String(format: "%.0f", foodItem.calories)
-        protein = String(format: "%.1f", foodItem.proteinGrams)
-        carbs = String(format: "%.1f", foodItem.carbsGrams)
-        fat = String(format: "%.1f", foodItem.fatGrams)
+        servingQuantity = foodItem.servingQuantity ?? 1.0
+        servingUnitName = foodItem.servingUnitName ?? "Serving"
+        let baseCal = foodItem.baseCalories ?? (servingQuantity > 0 ? foodItem.calories / servingQuantity : foodItem.calories)
+        let baseP = foodItem.baseProteinGrams ?? (servingQuantity > 0 ? foodItem.proteinGrams / servingQuantity : foodItem.proteinGrams)
+        let baseC = foodItem.baseCarbsGrams ?? (servingQuantity > 0 ? foodItem.carbsGrams / servingQuantity : foodItem.carbsGrams)
+        let baseF = foodItem.baseFatGrams ?? (servingQuantity > 0 ? foodItem.fatGrams / servingQuantity : foodItem.fatGrams)
+
+        calories = String(format: "%.0f", baseCal)
+        protein = String(format: "%.1f", baseP)
+        carbs = String(format: "%.1f", baseC)
+        fat = String(format: "%.1f", baseF)
         mealType = foodItem.mealType
     }
 
     private func saveChanges() {
+        let baseCal = Double(calories) ?? 0
+        let baseP = Double(protein) ?? 0
+        let baseC = Double(carbs) ?? 0
+        let baseF = Double(fat) ?? 0
+        let qty = max(0.01, servingQuantity)
+
         foodItem.name = name.trimmingCharacters(in: .whitespacesAndNewlines)
         foodItem.brand = brand.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : brand.trimmingCharacters(in: .whitespacesAndNewlines)
-        foodItem.calories = Double(calories) ?? 0
-        foodItem.proteinGrams = Double(protein) ?? 0
-        foodItem.carbsGrams = Double(carbs) ?? 0
-        foodItem.fatGrams = Double(fat) ?? 0
+        foodItem.servingQuantity = qty
+        foodItem.servingUnitName = servingUnitName
+        foodItem.baseCalories = baseCal
+        foodItem.baseProteinGrams = baseP
+        foodItem.baseCarbsGrams = baseC
+        foodItem.baseFatGrams = baseF
+        foodItem.calories = baseCal * qty
+        foodItem.proteinGrams = baseP * qty
+        foodItem.carbsGrams = baseC * qty
+        foodItem.fatGrams = baseF * qty
         foodItem.mealType = mealType
 
         try? modelContext.save()

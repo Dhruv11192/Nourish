@@ -55,12 +55,6 @@ final class ScannerUITests: XCTestCase {
         let controller = CameraController()
         let representable = CameraPreviewRepresentable(controller: controller)
         XCTAssertNotNil(representable)
-
-        #if targetEnvironment(simulator)
-        let dummyContext = UnsafeMutableRawPointer.allocate(byteCount: 0, alignment: 1)
-        // Check makeUIView in simulator environment
-        // The representable compiles and provides a safe placeholder
-        #endif
     }
 
     // MARK: - BarcodeScannerOverlay Tests

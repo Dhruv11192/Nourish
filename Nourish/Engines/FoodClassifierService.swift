@@ -56,7 +56,13 @@ struct EstimatedFoodCandidate: Identifiable, Equatable, Sendable {
             proteinGrams: self.proteinGrams,
             carbsGrams: self.carbsGrams,
             fatGrams: self.fatGrams,
-            mealType: mealType
+            mealType: mealType,
+            servingQuantity: 1.0,
+            servingUnitName: "Serving (\(Int(self.servingGrams))g)",
+            baseCalories: self.calories,
+            baseProteinGrams: self.proteinGrams,
+            baseCarbsGrams: self.carbsGrams,
+            baseFatGrams: self.fatGrams
         )
     }
 }

@@ -52,6 +52,28 @@ final class DiaryViewModel {
         }
     }
 
+    func addFoodItem(_ item: FoodItem, context: ModelContext) {
+        let dateString = DateFormatter.yyyyMMdd.string(from: selectedDate)
+        let descriptor = FetchDescriptor<DailyLog>(predicate: #Predicate<DailyLog> { log in
+            log.dateString == dateString
+        })
+
+        do {
+            let log: DailyLog
+            if let existingLog = try context.fetch(descriptor).first {
+                log = existingLog
+            } else {
+                log = DailyLog(dateString: dateString)
+                context.insert(log)
+            }
+            log.foodItems.append(item)
+            try context.save()
+            self.currentLog = log
+        } catch {
+            self.error = error
+        }
+    }
+
     func items(for mealType: MealType) -> [FoodItem] {
         return currentLog?.foodItems(for: mealType) ?? []
     }

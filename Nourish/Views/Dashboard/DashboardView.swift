@@ -48,31 +48,40 @@ struct DashboardView: View {
                 UnifiedScannerView(
                     onLogFood: { item in
                         item.mealType = selectedScannerMealType
-                        if let log = viewModel.todayLog {
-                            log.foodItems.append(item)
-                            try? modelContext.save()
-                        }
+                        logFoodItem(item)
                     },
                     onLogFoods: { items in
-                        if let log = viewModel.todayLog {
-                            for item in items {
-                                item.mealType = selectedScannerMealType
-                                log.foodItems.append(item)
-                            }
-                            try? modelContext.save()
+                        for item in items {
+                            item.mealType = selectedScannerMealType
+                            logFoodItem(item)
                         }
                     }
                 )
             }
             .sheet(item: $mealTypeForManualEntry) { mealType in
                 ManualFoodEntryView(initialMealType: mealType) { newItem in
-                    if let log = viewModel.todayLog {
-                        log.foodItems.append(newItem)
-                        try? modelContext.save()
-                    }
+                    logFoodItem(newItem)
                 }
             }
         }
+    }
+
+    private func logFoodItem(_ item: FoodItem) {
+        let todayString = DateFormatter.yyyyMMdd.string(from: Date())
+        let descriptor = FetchDescriptor<DailyLog>(predicate: #Predicate<DailyLog> { log in
+            log.dateString == todayString
+        })
+
+        if let todayLog = try? modelContext.fetch(descriptor).first {
+            todayLog.foodItems.append(item)
+        } else {
+            let newLog = DailyLog(dateString: todayString, foodItems: [item])
+            modelContext.insert(newLog)
+        }
+        try? modelContext.save()
+
+        // Reload data so the view updates
+        viewModel.loadData(context: modelContext)
     }
 
     // MARK: - Calorie Card

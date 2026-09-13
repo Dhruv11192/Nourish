@@ -36,10 +36,7 @@ struct DiaryView: View {
             }
             .sheet(item: $mealTypeForManualEntry) { mealType in
                 ManualFoodEntryView(initialMealType: mealType) { newItem in
-                    if let currentLog = viewModel.currentLog {
-                        currentLog.foodItems.append(newItem)
-                        try? modelContext.save()
-                    }
+                    viewModel.addFoodItem(newItem, context: modelContext)
                 }
             }
             .sheet(isPresented: $showDatePicker) {
@@ -183,6 +180,12 @@ struct DiaryView: View {
                             Text(brand)
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
+                        }
+
+                        if let qty = item.servingQuantity, let unit = item.servingUnitName {
+                             Text(String(format: "%.1f %@", qty, unit))
+                                .font(.caption2.bold())
+                                .foregroundColor(ThemeColors.protein)
                         }
 
                         Text("P: \(Int(item.proteinGrams))g  C: \(Int(item.carbsGrams))g  F: \(Int(item.fatGrams))g")

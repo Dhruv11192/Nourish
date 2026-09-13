@@ -35,7 +35,13 @@ public struct ParsedNutritionData: Equatable, Sendable {
             proteinGrams: protein ?? 0,
             carbsGrams: carbs ?? 0,
             fatGrams: fat ?? 0,
-            mealType: mealType
+            mealType: mealType,
+            servingQuantity: 1.0,
+            servingUnitName: servingSize ?? "Serving",
+            baseCalories: calories ?? 0,
+            baseProteinGrams: protein ?? 0,
+            baseCarbsGrams: carbs ?? 0,
+            baseFatGrams: fat ?? 0
         )
     }
 }
