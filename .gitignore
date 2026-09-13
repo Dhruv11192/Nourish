@@ -1,0 +1,24 @@
+# Ignore everything by default
+*
+.*
+
+# Force track essential project files and folders
+!Nourish/
+!Nourish/**
+!NourishTests/
+!NourishTests/**
+!Nourish.xcodeproj/
+!Nourish.xcodeproj/**
+!Package.swift
+!project.yml
+!README.md
+!.gitignore
+
+# Re-ignore generated or transient build artifacts
+Nourish.ipa
+build_log.txt
+.build/
+.swiftpm/
+*.xcuserdata
+xcuserdata/
+*.xcworkspace/xcuserdata/
