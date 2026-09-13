@@ -673,6 +673,54 @@ enum LocalFoodDatabase {
         return fullCatalog
     }
 
+    public static func search(query: String) -> [LocalFoodItem] {
+        let cleaned = query.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        guard !cleaned.isEmpty else { return fullCatalog }
+
+        let searchSpace = fullCatalog
+
+        // 1. Direct matches (name or keyword contains query)
+        let directMatches = searchSpace.filter { item in
+            item.name.lowercased().contains(cleaned) ||
+            item.keywords.contains { $0.lowercased().contains(cleaned) }
+        }
+
+        if !directMatches.isEmpty {
+            return directMatches.sorted { a, b in
+                let aStarts = a.name.lowercased().hasPrefix(cleaned)
+                let bStarts = b.name.lowercased().hasPrefix(cleaned)
+                if aStarts != bStarts { return aStarts }
+                return a.name.count < b.name.count
+            }
+        }
+
+        // 2. Fuzzy token match
+        let tokens = cleaned
+            .split { !$0.isLetter && !$0.isNumber }
+            .map { String($0) }
+            .filter { $0.count >= 2 }
+
+        guard !tokens.isEmpty else { return [] }
+
+        var scored: [(item: LocalFoodItem, score: Int)] = []
+        for item in searchSpace {
+            var score = 0
+            let nameLower = item.name.lowercased()
+            let kws = item.keywords.map { $0.lowercased() }
+            for token in tokens {
+                if nameLower.contains(token) { score += 3 }
+                for kw in kws {
+                    if kw.contains(token) { score += 1 }
+                }
+            }
+            if score > 0 {
+                scored.append((item, score))
+            }
+        }
+
+        return scored.sorted { $0.score > $1.score }.map { $0.item }
+    }
+
     public static func find(matching query: String) -> LocalFoodItem? {
         let cleaned = query
             .trimmingCharacters(in: .whitespacesAndNewlines)

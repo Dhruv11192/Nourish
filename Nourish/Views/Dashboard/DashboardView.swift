@@ -3,11 +3,24 @@ import SwiftData
 
 struct DashboardView: View {
     @Environment(\.modelContext) private var modelContext
-    @State private var viewModel = DashboardViewModel()
-
+    
+    @Query private var userProfiles: [UserProfile]
+    @Query private var dailyLogs: [DailyLog]
+    
+    @State private var steps: Int = 0
+    @State private var isLoading: Bool = false
     @State private var showScanner: Bool = false
     @State private var mealTypeForManualEntry: MealType?
     @State private var selectedScannerMealType: MealType = .snack
+    
+    var todayLog: DailyLog? {
+        let todayString = DateFormatter.yyyyMMdd.string(from: Date())
+        return dailyLogs.first { $0.dateString == todayString }
+    }
+    
+    var userProfile: UserProfile? {
+        userProfiles.first
+    }
 
     var body: some View {
         NavigationStack {
@@ -42,7 +55,8 @@ struct DashboardView: View {
             .background(ThemeColors.deepBackground.ignoresSafeArea())
             .navigationTitle("Dashboard")
             .onAppear {
-                viewModel.loadData(context: modelContext)
+                ensureDailyLogExists()
+                syncHealthKit()
             }
             .sheet(isPresented: $showScanner) {
                 UnifiedScannerView(
@@ -65,23 +79,72 @@ struct DashboardView: View {
             }
         }
     }
+    
+    private func ensureDailyLogExists() {
+        let todayString = DateFormatter.yyyyMMdd.string(from: Date())
+        if !dailyLogs.contains(where: { $0.dateString == todayString }) {
+            let newLog = DailyLog(dateString: todayString)
+            modelContext.insert(newLog)
+            try? modelContext.save()
+        }
+    }
 
     private func logFoodItem(_ item: FoodItem) {
         let todayString = DateFormatter.yyyyMMdd.string(from: Date())
-        let descriptor = FetchDescriptor<DailyLog>(predicate: #Predicate<DailyLog> { log in
-            log.dateString == todayString
-        })
-
-        if let todayLog = try? modelContext.fetch(descriptor).first {
-            todayLog.foodItems.append(item)
+        if let log = dailyLogs.first(where: { $0.dateString == todayString }) {
+            log.foodItems.append(item)
         } else {
             let newLog = DailyLog(dateString: todayString, foodItems: [item])
             modelContext.insert(newLog)
         }
         try? modelContext.save()
-
-        // Reload data so the view updates
-        viewModel.loadData(context: modelContext)
+    }
+    
+    private func syncHealthKit() {
+        Task {
+            let healthService = HealthKitService.shared
+            guard healthService.isAvailable else { return }
+            do {
+                try await healthService.requestAuthorization()
+                let data = try await healthService.fetchDailyBurnedEnergyAndSteps(for: Date())
+                await MainActor.run {
+                    self.steps = data.steps
+                    if let log = self.todayLog {
+                        log.activeEnergyBurnedKcal = data.activeEnergyBurnedKcal
+                        try? self.modelContext.save()
+                    }
+                }
+            } catch {
+                print("HealthKit sync failed: \(error)")
+            }
+        }
+    }
+    
+    private func addWater(amountMl: Double) {
+        let log: DailyLog
+        let todayString = DateFormatter.yyyyMMdd.string(from: Date())
+        if let existing = dailyLogs.first(where: { $0.dateString == todayString }) {
+            log = existing
+        } else {
+            log = DailyLog(dateString: todayString)
+            modelContext.insert(log)
+        }
+        log.waterIntakeMl += amountMl
+        try? modelContext.save()
+        
+        Task {
+            try? await HealthKitService.shared.exportWater(milliliters: amountMl, date: Date())
+        }
+    }
+    
+    // MARK: - Computed Properties
+    
+    var calorieGoal: Double { userProfile?.targetDailyCalories ?? 2000 }
+    var consumedCalories: Double { todayLog?.totalCalories ?? 0 }
+    var burnedCalories: Double { todayLog?.activeEnergyBurnedKcal ?? 0 }
+    var caloriesRemaining: Double {
+        let remaining = calorieGoal - consumedCalories + burnedCalories
+        return max(0, remaining)
     }
 
     // MARK: - Calorie Card
@@ -95,14 +158,14 @@ struct DashboardView: View {
 
                 ZStack {
                     LiquidProgressRing(
-                        progress: viewModel.calorieGoal > 0 ? (viewModel.consumedCalories / viewModel.calorieGoal) : 0,
+                        progress: calorieGoal > 0 ? (consumedCalories / calorieGoal) : 0,
                         color: ThemeColors.protein,
                         lineWidth: 16
                     )
                     .frame(width: 180, height: 180)
 
                     VStack(spacing: 4) {
-                        Text("\(Int(viewModel.caloriesRemaining))")
+                        Text("\(Int(caloriesRemaining))")
                             .font(.system(size: 38, weight: .bold, design: .rounded))
                         Text("kcal left")
                             .font(.caption)
@@ -116,7 +179,7 @@ struct DashboardView: View {
                         Text("Base Goal")
                             .font(.caption2)
                             .foregroundColor(.secondary)
-                        Text("\(Int(viewModel.calorieGoal))")
+                        Text("\(Int(calorieGoal))")
                             .font(.subheadline.bold())
                     }
 
@@ -127,7 +190,7 @@ struct DashboardView: View {
                         Text("Food")
                             .font(.caption2)
                             .foregroundColor(.secondary)
-                        Text("\(Int(viewModel.consumedCalories))")
+                        Text("\(Int(consumedCalories))")
                             .font(.subheadline.bold())
                     }
 
@@ -138,7 +201,7 @@ struct DashboardView: View {
                         Text("Burned")
                             .font(.caption2)
                             .foregroundColor(.secondary)
-                        Text("\(Int(viewModel.burnedCalories))")
+                        Text("\(Int(burnedCalories))")
                             .font(.subheadline.bold())
                     }
                 }
@@ -159,25 +222,22 @@ struct DashboardView: View {
                 VStack(spacing: 12) {
                     macroBar(
                         title: "Protein",
-                        current: viewModel.todayLog?.totalProtein ?? 0,
-                        target: viewModel.userProfile?.targetProteinGrams ?? 150,
-                        progress: viewModel.proteinProgress,
+                        current: todayLog?.totalProtein ?? 0,
+                        target: userProfile?.targetProteinGrams ?? 150,
                         color: ThemeColors.protein
                     )
 
                     macroBar(
                         title: "Carbs",
-                        current: viewModel.todayLog?.totalCarbs ?? 0,
-                        target: viewModel.userProfile?.targetCarbsGrams ?? 200,
-                        progress: viewModel.carbsProgress,
+                        current: todayLog?.totalCarbs ?? 0,
+                        target: userProfile?.targetCarbsGrams ?? 200,
                         color: ThemeColors.carbs
                     )
 
                     macroBar(
                         title: "Fat",
-                        current: viewModel.todayLog?.totalFat ?? 0,
-                        target: viewModel.userProfile?.targetFatGrams ?? 65,
-                        progress: viewModel.fatProgress,
+                        current: todayLog?.totalFat ?? 0,
+                        target: userProfile?.targetFatGrams ?? 65,
                         color: ThemeColors.fat
                     )
                 }
@@ -186,8 +246,9 @@ struct DashboardView: View {
         }
     }
 
-    private func macroBar(title: String, current: Double, target: Double, progress: Double, color: Color) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
+    private func macroBar(title: String, current: Double, target: Double, color: Color) -> some View {
+        let progress = target > 0 ? min(current / target, 1.0) : 0
+        return VStack(alignment: .leading, spacing: 6) {
             HStack {
                 Text(title)
                     .font(.subheadline.bold())
@@ -230,7 +291,7 @@ struct DashboardView: View {
                             .font(.title2)
                             .foregroundColor(.orange)
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("\(Int(viewModel.burnedCalories)) kcal")
+                            Text("\(Int(burnedCalories)) kcal")
                                 .font(.headline)
                             Text("Active Energy")
                                 .font(.caption)
@@ -247,7 +308,7 @@ struct DashboardView: View {
                             .font(.title2)
                             .foregroundColor(.blue)
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("\(viewModel.steps)")
+                            Text("\(steps)")
                                 .font(.headline)
                             Text("Steps")
                                 .font(.caption)
@@ -264,7 +325,11 @@ struct DashboardView: View {
     // MARK: - Water Card
 
     private var waterCard: some View {
-        FrostedCard {
+        let currentWater = todayLog?.waterIntakeMl ?? 0
+        let targetWater = userProfile?.targetWaterIntakeMl ?? 2500
+        let progress = targetWater > 0 ? min(currentWater / targetWater, 1.0) : 0
+        
+        return FrostedCard {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Image(systemName: "drop.fill")
@@ -272,7 +337,7 @@ struct DashboardView: View {
                     Text("Water Intake")
                         .font(.headline)
                     Spacer()
-                    Text("\(Int(viewModel.todayLog?.waterIntakeMl ?? 0)) / \(Int(viewModel.userProfile?.targetWaterIntakeMl ?? 2500)) ml")
+                    Text("\(Int(currentWater)) / \(Int(targetWater)) ml")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
@@ -286,7 +351,7 @@ struct DashboardView: View {
 
                         Capsule()
                             .fill(ThemeColors.water)
-                            .frame(width: max(0, min(geo.size.width * CGFloat(viewModel.waterProgress), geo.size.width)), height: 12)
+                            .frame(width: max(0, min(geo.size.width * CGFloat(progress), geo.size.width)), height: 12)
                     }
                 }
                 .frame(height: 12)
@@ -294,7 +359,7 @@ struct DashboardView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        viewModel.addWater(amountMl: 250, context: modelContext)
+                        addWater(amountMl: 250)
                     }) {
                         HStack(spacing: 6) {
                             Image(systemName: "plus")

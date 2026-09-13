@@ -15,6 +15,9 @@ struct UnifiedScannerView: View {
     @State var plateViewModel = AIPlateScannerViewModel()
     @State private var pendingFoodItems: [FoodItem] = []
 
+    // Wrapper for reliable SwiftUI sheet presentation with unpersisted SwiftData models
+    @State private var portionConfirmationRequest: PendingFoodPortion?
+
     init(
         selectedMode: ScannerMode = .barcode,
         onLogFood: ((FoodItem) -> Void)? = nil,
@@ -90,17 +93,8 @@ struct UnifiedScannerView: View {
         .onChange(of: selectedMode) { _, newMode in
             handleModeChange(newMode)
         }
-        .sheet(item: Binding<FoodItem?>(
-            get: { self.pendingFoodItems.first },
-            set: { newValue in
-                if newValue == nil && !self.pendingFoodItems.isEmpty {
-                    // This happens if the sheet is dismissed without saving.
-                    // We discard the item and move on to the next.
-                    self.pendingFoodItems.removeFirst()
-                }
-            }
-        )) { item in
-            ManualFoodEntryView(prefilledItem: item, initialMealType: item.mealType) { updatedItem in
+        .sheet(item: $portionConfirmationRequest) { request in
+            ManualFoodEntryView(prefilledItem: request.item, initialMealType: request.item.mealType) { updatedItem in
                 // Successfully confirmed portion!
                 if let onLogFood {
                     onLogFood(updatedItem)
@@ -108,13 +102,14 @@ struct UnifiedScannerView: View {
                     onLogFoods([updatedItem]) // log one by one to original caller
                 }
 
-                // Remove the one we just processed
-                if !self.pendingFoodItems.isEmpty {
-                    self.pendingFoodItems.removeFirst()
-                }
+                portionConfirmationRequest = nil
 
-                // If nothing left, we are done tracking here.
-                if self.pendingFoodItems.isEmpty {
+                // If more items wait in the queue, show them after a tiny delay
+                if !self.pendingFoodItems.isEmpty {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        self.presentNextPendingItem()
+                    }
+                } else {
                     dismiss()
                 }
             }
@@ -272,9 +267,21 @@ struct UnifiedScannerView: View {
 
     private func handleLogFood(_ item: FoodItem) {
         pendingFoodItems.append(item)
+        if portionConfirmationRequest == nil {
+            presentNextPendingItem()
+        }
     }
 
     private func handleLogFoods(_ items: [FoodItem]) {
         pendingFoodItems.append(contentsOf: items)
+        if portionConfirmationRequest == nil {
+            presentNextPendingItem()
+        }
+    }
+
+    private func presentNextPendingItem() {
+        guard !pendingFoodItems.isEmpty else { return }
+        let next = pendingFoodItems.removeFirst()
+        portionConfirmationRequest = PendingFoodPortion(item: next)
     }
 }

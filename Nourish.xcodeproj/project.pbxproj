@@ -25,6 +25,7 @@
 		5AA01A50C7055621C983E968 /* ManualFoodEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F0AC39FC6FAC9CC778DC6 /* ManualFoodEntryView.swift */; };
 		605A6EE9202E7714F48A2DCD /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D7DB70BF6119A3C1FA1EE2 /* OnboardingFlowView.swift */; };
 		617778A8EBD4A34D94559A43 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE4E16C3F2D17F1925150C7 /* FoodItem.swift */; };
+		61FE8C8AEBC044556F7E2AB1 /* PendingFoodPortion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D67B902AFE0C5C5CE3205C /* PendingFoodPortion.swift */; };
 		67523EB635D10952BCA0E040 /* MacroPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8FD419E23C65A85C5959BC /* MacroPillView.swift */; };
 		68E97827B620A0B3F9994935 /* DailyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D0F1DEC1A087F4E8692EBB /* DailyLog.swift */; };
 		697E5505FCF1992945BDBA7C /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C54AF125D97185A8A5652 /* HealthKitService.swift */; };
@@ -53,6 +54,7 @@
 		D4610E2E6A36AE0F8332A4E4 /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E275B3F84BF9DD4E5656C4 /* OnboardingViewModelTests.swift */; };
 		D77EBA65D2CC4078CC2BD0AD /* OpenFoodFactsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5AA74B12A164468413C6FE /* OpenFoodFactsServiceTests.swift */; };
 		DC586B793A3F13D225A3A35A /* FoodDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBB49B72DCF38ED9E22642 /* FoodDetailSheet.swift */; };
+		DD87701A88522D9FC609BD95 /* FoodSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13282C05FB967BAD4C19BAA0 /* FoodSearchView.swift */; };
 		DF7940D1CC76DB85CF4C7B6A /* ScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907639BCA77E83C87073AC1 /* ScannerUITests.swift */; };
 		E6B1EBB219255CF90CA9E90F /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE56ED367B336EE8CFB559 /* OnboardingViewModel.swift */; };
 		EF3344D3808192517E2A83A4 /* AIPlateScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB5F10DA3B1FA679DAE5F9 /* AIPlateScannerViewModel.swift */; };
@@ -75,6 +77,7 @@
 		016C6BDFB8C873E2462E94A3 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		02E1D0CD1FD3242736C7DDF8 /* MetricInputStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricInputStepView.swift; sourceTree = "<group>"; };
 		0E63D91D11F4A7E2EF47992A /* CalorieCalculationEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCalculationEngineTests.swift; sourceTree = "<group>"; };
+		13282C05FB967BAD4C19BAA0 /* FoodSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchView.swift; sourceTree = "<group>"; };
 		16D3B2D5995C202C6A575058 /* ScannerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerMode.swift; sourceTree = "<group>"; };
 		176DB8886F8D1971871F6DBA /* Nourish.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Nourish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		186E249CF350F05671B14F2B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -115,6 +118,7 @@
 		A4D7DB70BF6119A3C1FA1EE2 /* OnboardingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowView.swift; sourceTree = "<group>"; };
 		A7E275B3F84BF9DD4E5656C4 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
 		AE781E351EFDE534D81724AE /* OpenFoodFactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsService.swift; sourceTree = "<group>"; };
+		B5D67B902AFE0C5C5CE3205C /* PendingFoodPortion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingFoodPortion.swift; sourceTree = "<group>"; };
 		BE6941076447B6C898ECE9B1 /* BarcodeScannerOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerOverlay.swift; sourceTree = "<group>"; };
 		C40929972859EF20BB2B1B1D /* AIPlateClassifierOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIPlateClassifierOverlay.swift; sourceTree = "<group>"; };
 		C80F98D64A6A9D60989531F9 /* FoodClassifierServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodClassifierServiceTests.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 			children = (
 				633366D2EA966259150D919F /* DiaryView.swift */,
 				CCDBB49B72DCF38ED9E22642 /* FoodDetailSheet.swift */,
+				13282C05FB967BAD4C19BAA0 /* FoodSearchView.swift */,
 				9A8F0AC39FC6FAC9CC778DC6 /* ManualFoodEntryView.swift */,
 			);
 			path = Diary;
@@ -255,6 +260,7 @@
 				61C5C762B202618B14DDE1DC /* MealType.swift */,
 				9C4720C5C23C9AEC289707BA /* MFPFoods.json */,
 				8CF94C41D8369CC3BAFA2789 /* ParsedNutritionData.swift */,
+				B5D67B902AFE0C5C5CE3205C /* PendingFoodPortion.swift */,
 				16D3B2D5995C202C6A575058 /* ScannerMode.swift */,
 				475B3F691BEFA267B83BEFEC /* UserProfile.swift */,
 			);
@@ -416,6 +422,7 @@
 				B5EE510431741D5F9FBAD4DD /* FoodClassifierService.swift in Sources */,
 				DC586B793A3F13D225A3A35A /* FoodDetailSheet.swift in Sources */,
 				617778A8EBD4A34D94559A43 /* FoodItem.swift in Sources */,
+				DD87701A88522D9FC609BD95 /* FoodSearchView.swift in Sources */,
 				0C13FFED7B26E033EC361984 /* FrostedCard.swift in Sources */,
 				07DCDE97CB2C195AD061BE28 /* GoalSelectionStepView.swift in Sources */,
 				761D151CCD7A0BD3DA5EB0F0 /* HapticFeedback.swift in Sources */,
@@ -435,6 +442,7 @@
 				E6B1EBB219255CF90CA9E90F /* OnboardingViewModel.swift in Sources */,
 				995A1C6D2D1FFD1358F006AC /* OpenFoodFactsService.swift in Sources */,
 				F1C40A958B985E649CF2F2D2 /* ParsedNutritionData.swift in Sources */,
+				61FE8C8AEBC044556F7E2AB1 /* PendingFoodPortion.swift in Sources */,
 				55389A13E86DB6749887D35F /* PlanSummaryStepView.swift in Sources */,
 				BF89166C0D192AE507D9EF36 /* ScannerMode.swift in Sources */,
 				AAA4E83FE5C211D59290D6E9 /* ThemeColors.swift in Sources */,

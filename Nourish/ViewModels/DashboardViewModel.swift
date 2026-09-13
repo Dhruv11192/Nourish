@@ -114,7 +114,16 @@ final class DashboardViewModel {
     }
 
     func addWater(amountMl: Double, context: ModelContext) {
-        guard let log = todayLog else { return }
+        let log: DailyLog
+        if let existingLog = todayLog {
+            log = existingLog
+        } else {
+            let todayString = DateFormatter.yyyyMMdd.string(from: Date())
+            log = DailyLog(dateString: todayString)
+            context.insert(log)
+            self.todayLog = log
+        }
+
         log.waterIntakeMl += amountMl
         do {
             try context.save()

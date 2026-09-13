@@ -3,11 +3,24 @@ import SwiftData
 
 struct DiaryView: View {
     @Environment(\.modelContext) private var modelContext
-    @State private var viewModel = DiaryViewModel()
+
+    @State private var selectedDate: Date = Date()
 
     @State private var selectedFoodItem: FoodItem?
     @State private var mealTypeForManualEntry: MealType?
     @State private var showDatePicker: Bool = false
+    @State private var showSearch: Bool = false
+
+    // Reactive query — re-renders automatically whenever the ModelContext changes.
+    @Query private var dailyLogs: [DailyLog]
+
+    private var selectedDateString: String {
+        DateFormatter.yyyyMMdd.string(from: selectedDate)
+    }
+
+    private var currentLog: DailyLog? {
+        dailyLogs.first { $0.dateString == selectedDateString }
+    }
 
     var body: some View {
         NavigationStack {
@@ -25,32 +38,33 @@ struct DiaryView: View {
             }
             .background(ThemeColors.deepBackground.ignoresSafeArea())
             .navigationTitle("Diary")
-            
-            .onAppear {
-                viewModel.loadData(for: viewModel.selectedDate, context: modelContext)
-            }
+
             .sheet(item: $selectedFoodItem) { item in
                 FoodDetailSheet(foodItem: item) {
-                    viewModel.deleteFoodItem(item, context: modelContext)
+                    deleteFoodItem(item)
                 }
             }
             .sheet(item: $mealTypeForManualEntry) { mealType in
                 ManualFoodEntryView(initialMealType: mealType) { newItem in
-                    viewModel.addFoodItem(newItem, context: modelContext)
+                    addFoodItem(newItem)
+                }
+            }
+            .sheet(isPresented: $showSearch) {
+                FoodSearchView(initialMealType: .breakfast) { item in
+                    addFoodItem(item)
                 }
             }
             .sheet(isPresented: $showDatePicker) {
                 NavigationStack {
-                    DatePicker("Select Date", selection: $viewModel.selectedDate, displayedComponents: .date)
+                    DatePicker("Select Date", selection: $selectedDate, displayedComponents: .date)
                         .datePickerStyle(.graphical)
                         .padding()
                         .navigationTitle("Choose Date")
-                        
+
                         .toolbar {
                             ToolbarItem(placement: .confirmationAction) {
                                 Button("Done") {
                                     showDatePicker = false
-                                    viewModel.loadData(for: viewModel.selectedDate, context: modelContext)
                                 }
                             }
                         }
@@ -65,7 +79,9 @@ struct DiaryView: View {
     private var dateNavigationBar: some View {
         HStack {
             Button(action: {
-                viewModel.changeDate(byDays: -1, context: modelContext)
+                withAnimation(FluidSprings.standard) {
+                    selectedDate = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate) ?? selectedDate
+                }
             }) {
                 Image(systemName: "chevron.left")
                     .font(.headline)
@@ -80,7 +96,7 @@ struct DiaryView: View {
             }) {
                 HStack(spacing: 6) {
                     Image(systemName: "calendar")
-                    Text(formattedDate(viewModel.selectedDate))
+                    Text(formattedDate(selectedDate))
                         .font(.headline)
                 }
                 .foregroundColor(.primary)
@@ -89,7 +105,9 @@ struct DiaryView: View {
             Spacer()
 
             Button(action: {
-                viewModel.changeDate(byDays: 1, context: modelContext)
+                withAnimation(FluidSprings.standard) {
+                    selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate) ?? selectedDate
+                }
             }) {
                 Image(systemName: "chevron.right")
                     .font(.headline)
@@ -128,7 +146,7 @@ struct DiaryView: View {
                     Text(mealType.displayName)
                         .font(.headline)
                     Spacer()
-                    Text("\(Int(viewModel.totalCalories(for: mealType))) kcal")
+                    Text("\(Int(totalCalories(for: mealType))) kcal")
                         .font(.subheadline.bold())
                         .foregroundColor(.secondary)
                 }
@@ -136,7 +154,7 @@ struct DiaryView: View {
                 Divider()
 
                 // Food Items
-                let items = viewModel.items(for: mealType)
+                let items = items(for: mealType)
                 if items.isEmpty {
                     Text("No food logged yet")
                         .font(.caption)
@@ -206,10 +224,38 @@ struct DiaryView: View {
         .buttonStyle(.plain)
         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
             Button(role: .destructive) {
-                viewModel.deleteFoodItem(item, context: modelContext)
+                deleteFoodItem(item)
             } label: {
                 Label("Delete", systemImage: "trash")
             }
         }
+    }
+
+    // MARK: - Data Helpers
+
+    private func items(for mealType: MealType) -> [FoodItem] {
+        currentLog?.foodItems(for: mealType) ?? []
+    }
+
+    private func totalCalories(for mealType: MealType) -> Double {
+        items(for: mealType).reduce(0) { $0 + $1.calories }
+    }
+
+    private func addFoodItem(_ item: FoodItem) {
+        modelContext.insert(item)
+        let log: DailyLog
+        if let existing = currentLog {
+            log = existing
+        } else {
+            log = DailyLog(dateString: selectedDateString)
+            modelContext.insert(log)
+        }
+        log.foodItems.append(item)
+        try? modelContext.save()
+    }
+
+    private func deleteFoodItem(_ item: FoodItem) {
+        modelContext.delete(item)
+        try? modelContext.save()
     }
 }
