@@ -21,6 +21,21 @@ targets:
       - path: Nourish
     info:
       path: Nourish/Info.plist
+      properties:
+        NSHealthShareUsageDescription: Nourish uses health data to track activity and burned energy.
+        NSHealthUpdateUsageDescription: Nourish saves dietary intake and water consumption to Apple Health.
+        NSCameraUsageDescription: Nourish needs camera access to scan food barcodes, nutrition labels, and analyze plate contents via AI.
+        UILaunchStoryboardName: LaunchScreen
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+          - UIInterfaceOrientationPortraitUpsideDown
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
     entitlements:
       path: Nourish/Nourish.entitlements
     settings:
@@ -34,6 +49,7 @@ targets:
         GENERATE_INFOPLIST_FILE: "NO"
         CURRENT_PROJECT_VERSION: "1"
         MARKETING_VERSION: "1.0.0"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
 
   NourishTests:
     type: bundle.unit-test

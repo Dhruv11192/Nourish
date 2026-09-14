@@ -24,7 +24,8 @@ final class DashboardAndDiaryTests: XCTestCase {
     func testDashboardViewModelCalculations() throws {
         let profile = UserProfile(targetDailyCalories: 2000, targetProteinGrams: 150, targetCarbsGrams: 200, targetFatGrams: 65)
         context.insert(profile)
-        let log = DailyLog(dateString: "2026-09-13", activeEnergyBurnedKcal: 300)
+        let todayString = DateFormatter.yyyyMMdd.string(from: Date())
+        let log = DailyLog(dateString: todayString, activeEnergyBurnedKcal: 300)
         context.insert(log)
         let food = FoodItem(name: "Test", calories: 500, proteinGrams: 50, carbsGrams: 50, fatGrams: 10, mealType: .breakfast, dailyLog: log)
         context.insert(food)
@@ -46,10 +47,11 @@ final class DashboardAndDiaryTests: XCTestCase {
     // MARK: - DiaryViewModel Tests
 
     func testDiaryViewModelGroupingAndDeletion() throws {
-        let log = DailyLog(dateString: "2026-09-13")
+        let todayString = DateFormatter.yyyyMMdd.string(from: Date())
+        let log = DailyLog(dateString: todayString)
         context.insert(log)
-        let f1 = FoodItem(name: "Breakfast 1", calories: 100, mealType: .breakfast, dailyLog: log)
-        let f2 = FoodItem(name: "Lunch 1", calories: 200, mealType: .lunch, dailyLog: log)
+        let f1 = FoodItem(name: "Breakfast 1", calories: 100, proteinGrams: 10, carbsGrams: 10, fatGrams: 2, mealType: .breakfast, dailyLog: log)
+        let f2 = FoodItem(name: "Lunch 1", calories: 200, proteinGrams: 20, carbsGrams: 20, fatGrams: 4, mealType: .lunch, dailyLog: log)
         context.insert(f1)
         context.insert(f2)
         try context.save()

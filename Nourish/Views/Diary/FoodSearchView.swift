@@ -7,8 +7,11 @@ struct FoodSearchView: View {
 
     @State private var searchText: String = ""
     @State private var selectedMealType: MealType = .lunch
+    @State private var selectedCategory: String = "All"
     @State private var portionConfirmation: PendingFoodPortion?
     @State private var showManualCustomEntry: Bool = false
+
+    private let categories = ["All", "Indian", "Protein", "Fruit", "Veggie", "Dairy", "Grain", "Snack"]
 
     init(
         initialMealType: MealType = .lunch,
@@ -20,7 +23,31 @@ struct FoodSearchView: View {
     }
 
     private var searchResults: [LocalFoodItem] {
-        LocalFoodDatabase.search(query: searchText)
+        let baseResults = LocalFoodDatabase.search(query: searchText)
+        if selectedCategory == "All" {
+            return baseResults
+        }
+        return baseResults.filter { item in
+            let lower = item.name.lowercased() + " " + item.keywords.joined(separator: " ").lowercased()
+            switch selectedCategory {
+            case "Indian":
+                return lower.contains("roti") || lower.contains("paneer") || lower.contains("dal") || lower.contains("curry") || lower.contains("masala") || lower.contains("dosa") || lower.contains("idli") || lower.contains("biryani") || lower.contains("chawal") || lower.contains("sabzi") || lower.contains("paratha") || lower.contains("chilla") || lower.contains("bhurji") || lower.contains("pulao") || lower.contains("rajma") || lower.contains("chole")
+            case "Protein":
+                return lower.contains("chicken") || lower.contains("egg") || lower.contains("salmon") || lower.contains("beef") || lower.contains("tuna") || lower.contains("turkey") || lower.contains("whey") || lower.contains("protein") || lower.contains("tofu") || lower.contains("paneer") || item.proteinGrams >= 12
+            case "Fruit":
+                return lower.contains("banana") || lower.contains("apple") || lower.contains("berry") || lower.contains("berries") || lower.contains("orange") || lower.contains("mango") || lower.contains("grape") || lower.contains("watermelon") || lower.contains("lemon") || lower.contains("avocado")
+            case "Veggie":
+                return lower.contains("spinach") || lower.contains("broccoli") || lower.contains("salad") || lower.contains("onion") || lower.contains("tomato") || lower.contains("cucumber") || lower.contains("carrot") || lower.contains("pepper") || lower.contains("mushroom") || lower.contains("cauliflower")
+            case "Dairy":
+                return lower.contains("milk") || lower.contains("cheese") || lower.contains("yogurt") || lower.contains("curd") || lower.contains("butter") || lower.contains("cream") || lower.contains("ghee")
+            case "Grain":
+                return lower.contains("rice") || lower.contains("oat") || lower.contains("bread") || lower.contains("pasta") || lower.contains("roti") || lower.contains("flour") || lower.contains("quinoa") || lower.contains("wheat")
+            case "Snack":
+                return lower.contains("nut") || lower.contains("almond") || lower.contains("chocolate") || lower.contains("chip") || lower.contains("biscuit") || lower.contains("cookie") || lower.contains("bar") || lower.contains("popcorn")
+            default:
+                return true
+            }
+        }
     }
 
     var body: some View {
@@ -53,6 +80,29 @@ struct FoodSearchView: View {
                         }
                     }
                     .pickerStyle(.segmented)
+
+                    // Quick Category Chips
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 8) {
+                            ForEach(categories, id: \.self) { cat in
+                                Button(action: {
+                                    withAnimation(FluidSprings.standard) {
+                                        selectedCategory = cat
+                                    }
+                                }) {
+                                    Text(cat)
+                                        .font(.subheadline.bold())
+                                        .padding(.horizontal, 14)
+                                        .padding(.vertical, 6)
+                                        .background(selectedCategory == cat ? ThemeColors.fat : ThemeColors.surfaceBackground)
+                                        .foregroundColor(selectedCategory == cat ? .white : .primary)
+                                        .clipShape(Capsule())
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
+                        .padding(.vertical, 2)
+                    }
                 }
                 .padding()
                 .background(ThemeColors.deepBackground)
