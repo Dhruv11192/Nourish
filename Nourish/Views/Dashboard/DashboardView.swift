@@ -11,6 +11,7 @@ struct DashboardView: View {
     @State private var isLoading: Bool = false
     @State private var showScanner: Bool = false
     @State private var mealTypeForManualEntry: MealType?
+    @State private var mealTypeForSearch: MealType?
     @State private var selectedScannerMealType: MealType = .snack
     
     var todayLog: DailyLog? {
@@ -75,6 +76,11 @@ struct DashboardView: View {
             .sheet(item: $mealTypeForManualEntry) { mealType in
                 ManualFoodEntryView(initialMealType: mealType) { newItem in
                     logFoodItem(newItem)
+                }
+            }
+            .sheet(item: $mealTypeForSearch) { mealType in
+                FoodSearchView(initialMealType: mealType) { item in
+                    logFoodItem(item)
                 }
             }
         }
@@ -389,7 +395,7 @@ struct DashboardView: View {
                 ForEach(MealType.allCases) { mealType in
                     Button(action: {
                         selectedScannerMealType = mealType
-                        mealTypeForManualEntry = mealType
+                        mealTypeForSearch = mealType
                     }) {
                         FrostedCard {
                             HStack {

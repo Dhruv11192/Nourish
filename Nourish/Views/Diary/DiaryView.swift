@@ -8,8 +8,8 @@ struct DiaryView: View {
 
     @State private var selectedFoodItem: FoodItem?
     @State private var mealTypeForManualEntry: MealType?
+    @State private var mealTypeForSearch: MealType?
     @State private var showDatePicker: Bool = false
-    @State private var showSearch: Bool = false
 
     // Reactive query — re-renders automatically whenever the ModelContext changes.
     @Query private var dailyLogs: [DailyLog]
@@ -49,8 +49,8 @@ struct DiaryView: View {
                     addFoodItem(newItem)
                 }
             }
-            .sheet(isPresented: $showSearch) {
-                FoodSearchView(initialMealType: .breakfast) { item in
+            .sheet(item: $mealTypeForSearch) { mealType in
+                FoodSearchView(initialMealType: mealType) { item in
                     addFoodItem(item)
                 }
             }
@@ -168,7 +168,7 @@ struct DiaryView: View {
 
                 // Add Food Button
                 Button(action: {
-                    mealTypeForManualEntry = mealType
+                    mealTypeForSearch = mealType
                 }) {
                     HStack {
                         Image(systemName: "plus.circle.fill")

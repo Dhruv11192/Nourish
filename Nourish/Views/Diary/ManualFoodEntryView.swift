@@ -15,9 +15,14 @@ struct ManualFoodEntryView: View {
     @State private var carbs: String = ""
     @State private var fat: String = ""
     @State private var mealType: MealType = .snack
-    @State private var autoCalculateCalories: Bool = true
     @State private var servingUnit: ServingUnit = .serving
     @State private var quantity: Double = 1.0
+
+    // Internal state to track base values
+    @State private var baseCalories: Double = 0
+    @State private var baseProtein: Double = 0
+    @State private var baseCarbs: Double = 0
+    @State private var baseFat: Double = 0
 
     // Pre-defined serving units
     enum ServingUnit: String, CaseIterable, Identifiable {
@@ -63,10 +68,15 @@ struct ManualFoodEntryView: View {
             let baseC = item.baseCarbsGrams ?? (q > 0 ? item.carbsGrams / q : item.carbsGrams)
             let baseF = item.baseFatGrams ?? (q > 0 ? item.fatGrams / q : item.fatGrams)
 
-            self._calories = State(initialValue: String(format: "%.0f", baseCal))
-            self._protein = State(initialValue: String(format: "%.1f", baseP))
-            self._carbs = State(initialValue: String(format: "%.1f", baseC))
-            self._fat = State(initialValue: String(format: "%.1f", baseF))
+            self._baseCalories = State(initialValue: baseCal)
+            self._baseProtein = State(initialValue: baseP)
+            self._baseCarbs = State(initialValue: baseC)
+            self._baseFat = State(initialValue: baseF)
+
+            self._calories = State(initialValue: String(format: "%.0f", baseCal * q))
+            self._protein = State(initialValue: String(format: "%.1f", baseP * q))
+            self._carbs = State(initialValue: String(format: "%.1f", baseC * q))
+            self._fat = State(initialValue: String(format: "%.1f", baseF * q))
         }
     }
 
@@ -98,22 +108,26 @@ struct ManualFoodEntryView: View {
                             .numericKeyboard()
                             .multilineTextAlignment(.trailing)
                             .frame(width: 80)
+                            .onChange(of: quantity) { _, _ in
+                                recalculateTotalsFromBase()
+                            }
                         Stepper("", value: $quantity, in: 0.1...100.0, step: 0.5)
                             .labelsHidden()
+                            .onChange(of: quantity) { _, _ in
+                                recalculateTotalsFromBase()
+                            }
                     }
                 }
 
                 Section {
-                    Toggle("Auto-calculate calories from macros", isOn: $autoCalculateCalories)
-
                     HStack {
-                        Text("Calories (per \(servingUnit.displayName.lowercased()))")
+                        Text("Calories")
                         Spacer()
                         TextField("0", text: $calories)
                             .numericKeyboard()
                             .multilineTextAlignment(.trailing)
-                            .disabled(autoCalculateCalories)
-                            .foregroundColor(autoCalculateCalories ? .secondary : .primary)
+                            .disabled(prefilledItem != nil)
+                            .foregroundColor(prefilledItem != nil ? .secondary : .primary)
                         Text("kcal")
                             .foregroundColor(.secondary)
                     }
@@ -126,7 +140,11 @@ struct ManualFoodEntryView: View {
                             .numericKeyboard()
                             .multilineTextAlignment(.trailing)
                             .onChange(of: protein) { _, _ in
-                                recalculateCalories()
+                                if prefilledItem != nil {
+                                    updateBaseFromTotal()
+                                } else {
+                                    recalculateCaloriesFromMacros()
+                                }
                             }
                         Text("g")
                             .foregroundColor(.secondary)
@@ -140,7 +158,11 @@ struct ManualFoodEntryView: View {
                             .numericKeyboard()
                             .multilineTextAlignment(.trailing)
                             .onChange(of: carbs) { _, _ in
-                                recalculateCalories()
+                                if prefilledItem != nil {
+                                    updateBaseFromTotal()
+                                } else {
+                                    recalculateCaloriesFromMacros()
+                                }
                             }
                         Text("g")
                             .foregroundColor(.secondary)
@@ -154,27 +176,20 @@ struct ManualFoodEntryView: View {
                             .numericKeyboard()
                             .multilineTextAlignment(.trailing)
                             .onChange(of: fat) { _, _ in
-                                recalculateCalories()
+                                if prefilledItem != nil {
+                                    updateBaseFromTotal()
+                                } else {
+                                    recalculateCaloriesFromMacros()
+                                }
                             }
                         Text("g")
                             .foregroundColor(.secondary)
                     }
                 } header: {
-                    Text("Nutrition (Per 1 \(servingUnit.displayName))")
+                    Text("Nutrition (Total for \(String(format: "%.1f", quantity)) \(servingUnit.displayName))")
                 } footer: {
                     VStack(alignment: .leading, spacing: 4) {
-                        if autoCalculateCalories {
-                            Text("Base Calories = (Protein × 4) + (Carbs × 4) + (Fat × 9)")
-                        }
-                        if quantity != 1.0 {
-                            let totalCal = (Double(calories) ?? 0) * quantity
-                            let totalP = (Double(protein) ?? 0) * quantity
-                            let totalC = (Double(carbs) ?? 0) * quantity
-                            let totalF = (Double(fat) ?? 0) * quantity
-                            Text(String(format: "Total for %.1f %@: %.0f kcal (P: %.1fg, C: %.1fg, F: %.1fg)", quantity, servingUnit.displayName, totalCal, totalP, totalC, totalF))
-                                .font(.footnote)
-                                .foregroundColor(ThemeColors.protein)
-                        }
+                        Text("Calories = (Protein × 4) + (Carbs × 4) + (Fat × 9)")
                     }
                 }
             }
@@ -196,37 +211,68 @@ struct ManualFoodEntryView: View {
         }
     }
 
-    private func recalculateCalories() {
-        guard autoCalculateCalories else { return }
-        let p = Double(protein) ?? 0
-        let c = Double(carbs) ?? 0
-        let f = Double(fat) ?? 0
+    private func recalculateCaloriesFromMacros() {
+        let p = baseProtein
+        let c = baseCarbs
+        let f = baseFat
         let total = (p * 4.0) + (c * 4.0) + (f * 9.0)
-        calories = String(format: "%.0f", total)
+        baseCalories = total
+        updateTotalsFromBase()
+    }
+
+    private func updateBaseFromTotal() {
+        let q = quantity > 0 ? quantity : 1.0
+        baseProtein = (Double(protein) ?? 0) / q
+        baseCarbs = (Double(carbs) ?? 0) / q
+        baseFat = (Double(fat) ?? 0) / q
+        baseCalories = (baseProtein * 4.0) + (baseCarbs * 4.0) + (baseFat * 9.0)
+        updateTotalsFromBase()
+    }
+
+    private func recalculateTotalsFromBase() {
+        updateTotalsFromBase()
+    }
+
+    private func updateTotalsFromBase() {
+        let q = quantity
+        let totalCal = baseCalories * q
+        let totalP = baseProtein * q
+        let totalC = baseCarbs * q
+        let totalF = baseFat * q
+
+        calories = String(format: "%.0f", totalCal)
+        protein = String(format: "%.1f", totalP)
+        carbs = String(format: "%.1f", totalC)
+        fat = String(format: "%.1f", totalF)
     }
 
     private func saveFood() {
-        let baseCal = Double(calories) ?? 0
-        let baseP = Double(protein) ?? 0
-        let baseC = Double(carbs) ?? 0
-        let baseF = Double(fat) ?? 0
+        let totalCal = Double(calories) ?? (baseCalories * quantity)
+        let totalP = Double(protein) ?? (baseProtein * quantity)
+        let totalC = Double(carbs) ?? (baseCarbs * quantity)
+        let totalF = Double(fat) ?? (baseFat * quantity)
         let qty = max(0.01, quantity)
+
+        let bCal = baseCalories > 0 ? baseCalories : totalCal / qty
+        let bP = baseProtein > 0 ? baseProtein : totalP / qty
+        let bC = baseCarbs > 0 ? baseCarbs : totalC / qty
+        let bF = baseFat > 0 ? baseFat : totalF / qty
 
         let item = FoodItem(
             name: name.trimmingCharacters(in: .whitespacesAndNewlines),
             brand: brand.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : brand.trimmingCharacters(in: .whitespacesAndNewlines),
-            calories: baseCal * qty,
-            proteinGrams: baseP * qty,
-            carbsGrams: baseC * qty,
-            fatGrams: baseF * qty,
+            calories: totalCal,
+            proteinGrams: totalP,
+            carbsGrams: totalC,
+            fatGrams: totalF,
             mealType: mealType,
             timestamp: Date(),
             servingQuantity: qty,
             servingUnitName: servingUnit.displayName,
-            baseCalories: baseCal,
-            baseProteinGrams: baseP,
-            baseCarbsGrams: baseC,
-            baseFatGrams: baseF
+            baseCalories: bCal,
+            baseProteinGrams: bP,
+            baseCarbsGrams: bC,
+            baseFatGrams: bF
         )
 
         if let onSave {
