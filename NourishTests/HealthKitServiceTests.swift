@@ -35,6 +35,7 @@ final class HealthKitServiceTests: XCTestCase {
         let expectedReadIdentifiers: Set<HKQuantityTypeIdentifier> = [
             .stepCount,
             .activeEnergyBurned,
+            .distanceWalkingRunning,
             .dietaryEnergyConsumed,
             .dietaryProtein,
             .dietaryCarbohydrates,

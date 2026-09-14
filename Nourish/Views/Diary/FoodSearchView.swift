@@ -148,7 +148,9 @@ struct FoodSearchView: View {
             }
             .background(ThemeColors.deepBackground.ignoresSafeArea())
             .navigationTitle("Search Food")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {

@@ -161,11 +161,13 @@ final class HealthKitService: HealthKitServiceProtocol, @unchecked Sendable {
         let readTypes: Set<HKObjectType> = [
             HKQuantityType(.stepCount),
             HKQuantityType(.activeEnergyBurned),
+            HKQuantityType(.distanceWalkingRunning),
             HKQuantityType(.dietaryEnergyConsumed),
             HKQuantityType(.dietaryProtein),
             HKQuantityType(.dietaryCarbohydrates),
             HKQuantityType(.dietaryFatTotal),
-            HKQuantityType(.dietaryWater)
+            HKQuantityType(.dietaryWater),
+            HKObjectType.workoutType()
         ]
 
         let shareTypes: Set<HKSampleType> = [
