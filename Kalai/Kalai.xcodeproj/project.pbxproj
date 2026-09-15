@@ -10,11 +10,14 @@
 		0175D8BBEDCB65132AFB0AA5 /* FoodSearchViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E22B518B82C1866802DB1 /* FoodSearchViewTests.swift */; };
 		04F4484AF893F3A3103366E1 /* KalaiTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F37DAC9573ECFA64666BF /* KalaiTheme.swift */; };
 		0BA0A603C48CF75DDA575A94 /* DataSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E2B2C759AA28662F2C8D35 /* DataSeeder.swift */; };
+		0DEB0F2227A834BFFD15DCD8 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFB23CB78D91EFC829521CA /* BarcodeScannerView.swift */; };
+		13E27AF9F81DDB6ADB257BF0 /* MealSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47C97C2626B1304CE62E9 /* MealSectionView.swift */; };
 		196783509ED2BB61896042B0 /* MacroRingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBDD9C4825D13FFE4F32F8B /* MacroRingTests.swift */; };
 		1AF123769D5EFC63B3420FB0 /* DailyDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE57ED2EBEDC4DDD49478B6 /* DailyDiary.swift */; };
 		2579B9CC3D33865434346E9B /* FoodRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38587CB49192F323B6C44EAA /* FoodRecord.swift */; };
 		47F9F52F0C54489A71507DC2 /* KalaiThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E944CF99C2AD1BDCA8C18F /* KalaiThemeTests.swift */; };
 		4AEC9C4F3C8635B7996FAB52 /* DataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBCD796420DC8F6DC97671B /* DataModelTests.swift */; };
+		4BF02F6B08B34944E44E1127 /* BarcodeScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EBD57D638A6DF10B838243 /* BarcodeScannerTests.swift */; };
 		609BF6CCE7D92723F9DB7B2E /* FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46404877B7416A9185123358 /* FoundationTests.swift */; };
 		7609859E1194AAF73C994AA4 /* MacroRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E26A8CC471F37B5634629D /* MacroRingView.swift */; };
 		8C44BF9874B67E283F6CAE83 /* KalaiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AF61FE6BB514D7B8E42243 /* KalaiApp.swift */; };
@@ -64,10 +67,13 @@
 		CCA1232477AB020F3772CADA /* FoodSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchView.swift; sourceTree = "<group>"; };
 		CEF7C1C5514AFE629FBB3791 /* DataSeederTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSeederTests.swift; sourceTree = "<group>"; };
 		D0928E20AA8D130BE73A5BED /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
+		D8EBD57D638A6DF10B838243 /* BarcodeScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerTests.swift; sourceTree = "<group>"; };
 		DD41A5555B99F588BA124F37 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		DE8E22B518B82C1866802DB1 /* FoodSearchViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchViewTests.swift; sourceTree = "<group>"; };
 		E83F55AA6359AE369DE8F04F /* DataIngestorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataIngestorTests.swift; sourceTree = "<group>"; };
+		EBFB23CB78D91EFC829521CA /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
 		EDC7A6950C46482421864605 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		FDC47C97C2626B1304CE62E9 /* MealSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -80,12 +86,21 @@
 			);
 			sourceTree = "<group>";
 		};
+		1F2F38738B530A38EC69BD58 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				EBFB23CB78D91EFC829521CA /* BarcodeScannerView.swift */,
+			);
+			path = Scanner;
+			sourceTree = "<group>";
+		};
 		27819D60AA3E319CCE78FA11 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				EDC7A6950C46482421864605 /* MainTabView.swift */,
 				398A6F7C99505620AEFFBA56 /* Dashboard */,
 				B814114363DE4AB59B5302B4 /* Diary */,
+				1F2F38738B530A38EC69BD58 /* Scanner */,
 				BD6F21EDB68F614FF2AB196B /* Search */,
 			);
 			path = Views;
@@ -129,6 +144,7 @@
 		9036E5A17F1B4F344B63298F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D8EBD57D638A6DF10B838243 /* BarcodeScannerTests.swift */,
 				E83F55AA6359AE369DE8F04F /* DataIngestorTests.swift */,
 				5FBCD796420DC8F6DC97671B /* DataModelTests.swift */,
 				CEF7C1C5514AFE629FBB3791 /* DataSeederTests.swift */,
@@ -157,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				D0928E20AA8D130BE73A5BED /* DiaryView.swift */,
+				FDC47C97C2626B1304CE62E9 /* MealSectionView.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -256,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DEB0F2227A834BFFD15DCD8 /* BarcodeScannerView.swift in Sources */,
 				ADC4ECB7298A596F7EBD4CEC /* CatalogFood.swift in Sources */,
 				EB2AE5AD33B2DB2F27588603 /* CatalogFoodEntry.swift in Sources */,
 				1AF123769D5EFC63B3420FB0 /* DailyDiary.swift in Sources */,
@@ -270,6 +288,7 @@
 				04F4484AF893F3A3103366E1 /* KalaiTheme.swift in Sources */,
 				7609859E1194AAF73C994AA4 /* MacroRingView.swift in Sources */,
 				DFE3A823B8F5CF68DDB8F514 /* MainTabView.swift in Sources */,
+				13E27AF9F81DDB6ADB257BF0 /* MealSectionView.swift in Sources */,
 				EA1B05B72EBBC51A4344102D /* UserProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BF02F6B08B34944E44E1127 /* BarcodeScannerTests.swift in Sources */,
 				E18FBA251941F7429C9AAC28 /* DataIngestorTests.swift in Sources */,
 				4AEC9C4F3C8635B7996FAB52 /* DataModelTests.swift in Sources */,
 				9F7CA6C3CEA04E8DC4006754 /* DataSeederTests.swift in Sources */,

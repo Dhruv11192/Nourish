@@ -8,4 +8,9 @@ final class MainTabViewTests: XCTestCase {
         _ = DiaryView()
         _ = DashboardView()
     }
+
+    func testMealSectionViewInstantiation() {
+        let section = MealSectionView(title: "Breakfast", foods: [], onAddFood: {})
+        XCTAssertNotNil(section)
+    }
 }
