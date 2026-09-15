@@ -11,6 +11,7 @@
 		1AF123769D5EFC63B3420FB0 /* DailyDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE57ED2EBEDC4DDD49478B6 /* DailyDiary.swift */; };
 		2579B9CC3D33865434346E9B /* FoodRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38587CB49192F323B6C44EAA /* FoodRecord.swift */; };
 		47F9F52F0C54489A71507DC2 /* KalaiThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E944CF99C2AD1BDCA8C18F /* KalaiThemeTests.swift */; };
+		4AEC9C4F3C8635B7996FAB52 /* DataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBCD796420DC8F6DC97671B /* DataModelTests.swift */; };
 		609BF6CCE7D92723F9DB7B2E /* FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46404877B7416A9185123358 /* FoundationTests.swift */; };
 		8C44BF9874B67E283F6CAE83 /* KalaiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AF61FE6BB514D7B8E42243 /* KalaiApp.swift */; };
 		DFE3A823B8F5CF68DDB8F514 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7A6950C46482421864605 /* MainTabView.swift */; };
@@ -34,6 +35,7 @@
 		23E944CF99C2AD1BDCA8C18F /* KalaiThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalaiThemeTests.swift; sourceTree = "<group>"; };
 		38587CB49192F323B6C44EAA /* FoodRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecord.swift; sourceTree = "<group>"; };
 		46404877B7416A9185123358 /* FoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationTests.swift; sourceTree = "<group>"; };
+		5FBCD796420DC8F6DC97671B /* DataModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelTests.swift; sourceTree = "<group>"; };
 		83E89419D9C54C063F647E20 /* Kalai.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Kalai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1AF61FE6BB514D7B8E42243 /* KalaiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalaiApp.swift; sourceTree = "<group>"; };
 		AF759990D081A252D97F94F0 /* KalaiTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = KalaiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +80,7 @@
 		9036E5A17F1B4F344B63298F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5FBCD796420DC8F6DC97671B /* DataModelTests.swift */,
 				46404877B7416A9185123358 /* FoundationTests.swift */,
 				23E944CF99C2AD1BDCA8C18F /* KalaiThemeTests.swift */,
 			);
@@ -192,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AEC9C4F3C8635B7996FAB52 /* DataModelTests.swift in Sources */,
 				609BF6CCE7D92723F9DB7B2E /* FoundationTests.swift in Sources */,
 				47F9F52F0C54489A71507DC2 /* KalaiThemeTests.swift in Sources */,
 			);
@@ -275,6 +279,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +312,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

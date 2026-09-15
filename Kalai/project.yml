@@ -21,6 +21,8 @@ targets:
   KalaiTests:
     type: bundle.unit-test
     platform: iOS
+    settings:
+      GENERATE_INFOPLIST_FILE: YES
     sources:
       - path: Tests
     dependencies:
