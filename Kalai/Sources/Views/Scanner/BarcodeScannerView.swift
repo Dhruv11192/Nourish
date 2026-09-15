@@ -41,7 +41,7 @@ class BarcodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(KalaiTheme.colors.background)
         setupCamera()
     }
 
@@ -91,4 +91,9 @@ class BarcodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
             captureSession?.stopRunning()
         }
     }
+}
+
+#Preview {
+    BarcodeScannerView(onScan: { _ in })
+        .kalaiBackground()
 }
