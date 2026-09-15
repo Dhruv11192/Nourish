@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0175D8BBEDCB65132AFB0AA5 /* FoodSearchViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E22B518B82C1866802DB1 /* FoodSearchViewTests.swift */; };
 		04F4484AF893F3A3103366E1 /* KalaiTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F37DAC9573ECFA64666BF /* KalaiTheme.swift */; };
+		0BA0A603C48CF75DDA575A94 /* DataSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E2B2C759AA28662F2C8D35 /* DataSeeder.swift */; };
 		196783509ED2BB61896042B0 /* MacroRingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBDD9C4825D13FFE4F32F8B /* MacroRingTests.swift */; };
 		1AF123769D5EFC63B3420FB0 /* DailyDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE57ED2EBEDC4DDD49478B6 /* DailyDiary.swift */; };
 		2579B9CC3D33865434346E9B /* FoodRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38587CB49192F323B6C44EAA /* FoodRecord.swift */; };
@@ -16,7 +18,10 @@
 		609BF6CCE7D92723F9DB7B2E /* FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46404877B7416A9185123358 /* FoundationTests.swift */; };
 		7609859E1194AAF73C994AA4 /* MacroRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E26A8CC471F37B5634629D /* MacroRingView.swift */; };
 		8C44BF9874B67E283F6CAE83 /* KalaiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AF61FE6BB514D7B8E42243 /* KalaiApp.swift */; };
+		9F7CA6C3CEA04E8DC4006754 /* DataSeederTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF7C1C5514AFE629FBB3791 /* DataSeederTests.swift */; };
 		A244A6366048BCD41AD34E08 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41A5555B99F588BA124F37 /* DashboardView.swift */; };
+		A457F4B119D8FD85EAF59849 /* FoodDetailModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF7163239E4D535BE5D1E9 /* FoodDetailModalView.swift */; };
+		A588E3B019202255E3359F0E /* FoodSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA1232477AB020F3772CADA /* FoodSearchView.swift */; };
 		ADB5AF2BF18351F11067A35F /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D6B2F41D73F0E6EC0968E7 /* MainTabViewTests.swift */; };
 		ADC4ECB7298A596F7EBD4CEC /* CatalogFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2D3F874A8E5D14BEC8265 /* CatalogFood.swift */; };
 		B00079BFB10E34A80B8563AB /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0928E20AA8D130BE73A5BED /* DiaryView.swift */; };
@@ -50,12 +55,17 @@
 		6FBDD9C4825D13FFE4F32F8B /* MacroRingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroRingTests.swift; sourceTree = "<group>"; };
 		73C5466DB194C41FBB9B51B7 /* DataIngestor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataIngestor.swift; sourceTree = "<group>"; };
 		76D6B2F41D73F0E6EC0968E7 /* MainTabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewTests.swift; sourceTree = "<group>"; };
+		79E2B2C759AA28662F2C8D35 /* DataSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSeeder.swift; sourceTree = "<group>"; };
 		83E89419D9C54C063F647E20 /* Kalai.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Kalai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E26A8CC471F37B5634629D /* MacroRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroRingView.swift; sourceTree = "<group>"; };
+		98BF7163239E4D535BE5D1E9 /* FoodDetailModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailModalView.swift; sourceTree = "<group>"; };
 		A1AF61FE6BB514D7B8E42243 /* KalaiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalaiApp.swift; sourceTree = "<group>"; };
 		AF759990D081A252D97F94F0 /* KalaiTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = KalaiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCA1232477AB020F3772CADA /* FoodSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchView.swift; sourceTree = "<group>"; };
+		CEF7C1C5514AFE629FBB3791 /* DataSeederTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSeederTests.swift; sourceTree = "<group>"; };
 		D0928E20AA8D130BE73A5BED /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
 		DD41A5555B99F588BA124F37 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		DE8E22B518B82C1866802DB1 /* FoodSearchViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchViewTests.swift; sourceTree = "<group>"; };
 		E83F55AA6359AE369DE8F04F /* DataIngestorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataIngestorTests.swift; sourceTree = "<group>"; };
 		EDC7A6950C46482421864605 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +86,7 @@
 				EDC7A6950C46482421864605 /* MainTabView.swift */,
 				398A6F7C99505620AEFFBA56 /* Dashboard */,
 				B814114363DE4AB59B5302B4 /* Diary */,
+				BD6F21EDB68F614FF2AB196B /* Search */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -101,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				73C5466DB194C41FBB9B51B7 /* DataIngestor.swift */,
+				79E2B2C759AA28662F2C8D35 /* DataSeeder.swift */,
 			);
 			path = Engines;
 			sourceTree = "<group>";
@@ -119,6 +131,8 @@
 			children = (
 				E83F55AA6359AE369DE8F04F /* DataIngestorTests.swift */,
 				5FBCD796420DC8F6DC97671B /* DataModelTests.swift */,
+				CEF7C1C5514AFE629FBB3791 /* DataSeederTests.swift */,
+				DE8E22B518B82C1866802DB1 /* FoodSearchViewTests.swift */,
 				46404877B7416A9185123358 /* FoundationTests.swift */,
 				23E944CF99C2AD1BDCA8C18F /* KalaiThemeTests.swift */,
 				6FBDD9C4825D13FFE4F32F8B /* MacroRingTests.swift */,
@@ -145,6 +159,15 @@
 				D0928E20AA8D130BE73A5BED /* DiaryView.swift */,
 			);
 			path = Diary;
+			sourceTree = "<group>";
+		};
+		BD6F21EDB68F614FF2AB196B /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				98BF7163239E4D535BE5D1E9 /* FoodDetailModalView.swift */,
+				CCA1232477AB020F3772CADA /* FoodSearchView.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		CB0097B7DE58E8196070B04C /* Models */ = {
@@ -238,8 +261,11 @@
 				1AF123769D5EFC63B3420FB0 /* DailyDiary.swift in Sources */,
 				A244A6366048BCD41AD34E08 /* DashboardView.swift in Sources */,
 				E674477529C8470A97008F86 /* DataIngestor.swift in Sources */,
+				0BA0A603C48CF75DDA575A94 /* DataSeeder.swift in Sources */,
 				B00079BFB10E34A80B8563AB /* DiaryView.swift in Sources */,
+				A457F4B119D8FD85EAF59849 /* FoodDetailModalView.swift in Sources */,
 				2579B9CC3D33865434346E9B /* FoodRecord.swift in Sources */,
+				A588E3B019202255E3359F0E /* FoodSearchView.swift in Sources */,
 				8C44BF9874B67E283F6CAE83 /* KalaiApp.swift in Sources */,
 				04F4484AF893F3A3103366E1 /* KalaiTheme.swift in Sources */,
 				7609859E1194AAF73C994AA4 /* MacroRingView.swift in Sources */,
@@ -254,6 +280,8 @@
 			files = (
 				E18FBA251941F7429C9AAC28 /* DataIngestorTests.swift in Sources */,
 				4AEC9C4F3C8635B7996FAB52 /* DataModelTests.swift in Sources */,
+				9F7CA6C3CEA04E8DC4006754 /* DataSeederTests.swift in Sources */,
+				0175D8BBEDCB65132AFB0AA5 /* FoodSearchViewTests.swift in Sources */,
 				609BF6CCE7D92723F9DB7B2E /* FoundationTests.swift in Sources */,
 				47F9F52F0C54489A71507DC2 /* KalaiThemeTests.swift in Sources */,
 				196783509ED2BB61896042B0 /* MacroRingTests.swift in Sources */,
