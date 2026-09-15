@@ -14,6 +14,9 @@
 		4AEC9C4F3C8635B7996FAB52 /* DataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBCD796420DC8F6DC97671B /* DataModelTests.swift */; };
 		609BF6CCE7D92723F9DB7B2E /* FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46404877B7416A9185123358 /* FoundationTests.swift */; };
 		8C44BF9874B67E283F6CAE83 /* KalaiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AF61FE6BB514D7B8E42243 /* KalaiApp.swift */; };
+		A244A6366048BCD41AD34E08 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41A5555B99F588BA124F37 /* DashboardView.swift */; };
+		ADB5AF2BF18351F11067A35F /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D6B2F41D73F0E6EC0968E7 /* MainTabViewTests.swift */; };
+		B00079BFB10E34A80B8563AB /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0928E20AA8D130BE73A5BED /* DiaryView.swift */; };
 		DFE3A823B8F5CF68DDB8F514 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7A6950C46482421864605 /* MainTabView.swift */; };
 		EA1B05B72EBBC51A4344102D /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD823015E1AA091633F681 /* UserProfile.swift */; };
 /* End PBXBuildFile section */
@@ -36,9 +39,12 @@
 		38587CB49192F323B6C44EAA /* FoodRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecord.swift; sourceTree = "<group>"; };
 		46404877B7416A9185123358 /* FoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationTests.swift; sourceTree = "<group>"; };
 		5FBCD796420DC8F6DC97671B /* DataModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelTests.swift; sourceTree = "<group>"; };
+		76D6B2F41D73F0E6EC0968E7 /* MainTabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewTests.swift; sourceTree = "<group>"; };
 		83E89419D9C54C063F647E20 /* Kalai.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Kalai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1AF61FE6BB514D7B8E42243 /* KalaiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalaiApp.swift; sourceTree = "<group>"; };
 		AF759990D081A252D97F94F0 /* KalaiTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = KalaiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0928E20AA8D130BE73A5BED /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
+		DD41A5555B99F588BA124F37 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		EDC7A6950C46482421864605 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,8 +62,18 @@
 			isa = PBXGroup;
 			children = (
 				EDC7A6950C46482421864605 /* MainTabView.swift */,
+				398A6F7C99505620AEFFBA56 /* Dashboard */,
+				B814114363DE4AB59B5302B4 /* Diary */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		398A6F7C99505620AEFFBA56 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				DD41A5555B99F588BA124F37 /* DashboardView.swift */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		5EB955D6CD8EFC3763972565 /* Theme */ = {
@@ -83,6 +99,7 @@
 				5FBCD796420DC8F6DC97671B /* DataModelTests.swift */,
 				46404877B7416A9185123358 /* FoundationTests.swift */,
 				23E944CF99C2AD1BDCA8C18F /* KalaiThemeTests.swift */,
+				76D6B2F41D73F0E6EC0968E7 /* MainTabViewTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -96,6 +113,14 @@
 				27819D60AA3E319CCE78FA11 /* Views */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		B814114363DE4AB59B5302B4 /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				D0928E20AA8D130BE73A5BED /* DiaryView.swift */,
+			);
+			path = Diary;
 			sourceTree = "<group>";
 		};
 		CB0097B7DE58E8196070B04C /* Models */ = {
@@ -183,6 +208,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AF123769D5EFC63B3420FB0 /* DailyDiary.swift in Sources */,
+				A244A6366048BCD41AD34E08 /* DashboardView.swift in Sources */,
+				B00079BFB10E34A80B8563AB /* DiaryView.swift in Sources */,
 				2579B9CC3D33865434346E9B /* FoodRecord.swift in Sources */,
 				8C44BF9874B67E283F6CAE83 /* KalaiApp.swift in Sources */,
 				04F4484AF893F3A3103366E1 /* KalaiTheme.swift in Sources */,
@@ -198,6 +225,7 @@
 				4AEC9C4F3C8635B7996FAB52 /* DataModelTests.swift in Sources */,
 				609BF6CCE7D92723F9DB7B2E /* FoundationTests.swift in Sources */,
 				47F9F52F0C54489A71507DC2 /* KalaiThemeTests.swift in Sources */,
+				ADB5AF2BF18351F11067A35F /* MainTabViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
