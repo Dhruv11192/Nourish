@@ -1,0 +1,27 @@
+name: Kalai
+options:
+  bundleIdPrefix: com.kalai.app
+  deploymentTarget:
+    iOS: "17.0"
+  xcodeVersion: "15.0"
+targets:
+  Kalai:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+    info:
+      path: Info.plist
+      properties:
+        CFBundleDisplayName: Kalai
+        CFBundleName: Kalai
+        NSCameraUsageDescription: Kalai needs access to your camera to scan food barcodes.
+        NSHealthShareUsageDescription: Kalai reads your activity data.
+        NSHealthUpdateUsageDescription: Kalai updates your activity data.
+  KalaiTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests
+    dependencies:
+      - target: Kalai
