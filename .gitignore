@@ -18,6 +18,8 @@
 !Package.swift
 !project.yml
 !README.md
+!docs/
+!docs/**
 !.gitignore
 
 # Re-ignore generated or transient build artifacts
