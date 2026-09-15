@@ -1,0 +1,50 @@
+[
+    {
+        "id": "f1",
+        "name": "Banana",
+        "category": "Fruit",
+        "nutritional_contents": {
+            "energy": {"value": 89, "unit": "kcal"},
+            "protein": 1.1,
+            "carbohydrates": 22.8,
+            "fat": 0.3
+        },
+        "serving_sizes": [{"value": 100, "unit": "g"}]
+    },
+    {
+        "id": "f2",
+        "name": "Scrambled Eggs",
+        "category": "Breakfast",
+        "nutritional_contents": {
+            "energy": {"value": 155, "unit": "kcal"},
+            "protein": 13,
+            "carbohydrates": 1.1,
+            "fat": 11
+        },
+        "serving_sizes": [{"value": 100, "unit": "g"}]
+    },
+    {
+        "id": "f3",
+        "name": "Chicken Breast",
+        "category": "Protein",
+        "nutritional_contents": {
+            "energy": {"value": 165, "unit": "kcal"},
+            "protein": 31,
+            "carbohydrates": 0,
+            "fat": 3.6
+        },
+        "serving_sizes": [{"value": 100, "unit": "g"}]
+    },
+    {
+        "id": "f4",
+        "name": "Brown Rice",
+        "category": "Grains",
+        "nutritional_contents": {
+            "energy": {"value": 123, "unit": "kcal"},
+            "protein": 2.7,
+            "carbohydrates": 25.6,
+            "fat": 1.0
+        },
+        "serving_sizes": [{"value": 100, "unit": "g"}]
+    }
+]
