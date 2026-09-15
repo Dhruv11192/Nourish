@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04F4484AF893F3A3103366E1 /* KalaiTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F37DAC9573ECFA64666BF /* KalaiTheme.swift */; };
 		1AF123769D5EFC63B3420FB0 /* DailyDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE57ED2EBEDC4DDD49478B6 /* DailyDiary.swift */; };
 		2579B9CC3D33865434346E9B /* FoodRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38587CB49192F323B6C44EAA /* FoodRecord.swift */; };
+		47F9F52F0C54489A71507DC2 /* KalaiThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E944CF99C2AD1BDCA8C18F /* KalaiThemeTests.swift */; };
 		609BF6CCE7D92723F9DB7B2E /* FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46404877B7416A9185123358 /* FoundationTests.swift */; };
 		8C44BF9874B67E283F6CAE83 /* KalaiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AF61FE6BB514D7B8E42243 /* KalaiApp.swift */; };
 		DFE3A823B8F5CF68DDB8F514 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7A6950C46482421864605 /* MainTabView.swift */; };
@@ -27,7 +29,9 @@
 
 /* Begin PBXFileReference section */
 		04CD823015E1AA091633F681 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		0A0F37DAC9573ECFA64666BF /* KalaiTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalaiTheme.swift; sourceTree = "<group>"; };
 		0EE57ED2EBEDC4DDD49478B6 /* DailyDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDiary.swift; sourceTree = "<group>"; };
+		23E944CF99C2AD1BDCA8C18F /* KalaiThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalaiThemeTests.swift; sourceTree = "<group>"; };
 		38587CB49192F323B6C44EAA /* FoodRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecord.swift; sourceTree = "<group>"; };
 		46404877B7416A9185123358 /* FoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationTests.swift; sourceTree = "<group>"; };
 		83E89419D9C54C063F647E20 /* Kalai.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Kalai.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +58,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		5EB955D6CD8EFC3763972565 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				0A0F37DAC9573ECFA64666BF /* KalaiTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		8E39597387C40E28AA326B7C /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				46404877B7416A9185123358 /* FoundationTests.swift */,
+				23E944CF99C2AD1BDCA8C18F /* KalaiThemeTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -76,6 +89,7 @@
 			children = (
 				A1AF61FE6BB514D7B8E42243 /* KalaiApp.swift */,
 				CB0097B7DE58E8196070B04C /* Models */,
+				5EB955D6CD8EFC3763972565 /* Theme */,
 				27819D60AA3E319CCE78FA11 /* Views */,
 			);
 			path = Sources;
@@ -168,6 +182,7 @@
 				1AF123769D5EFC63B3420FB0 /* DailyDiary.swift in Sources */,
 				2579B9CC3D33865434346E9B /* FoodRecord.swift in Sources */,
 				8C44BF9874B67E283F6CAE83 /* KalaiApp.swift in Sources */,
+				04F4484AF893F3A3103366E1 /* KalaiTheme.swift in Sources */,
 				DFE3A823B8F5CF68DDB8F514 /* MainTabView.swift in Sources */,
 				EA1B05B72EBBC51A4344102D /* UserProfile.swift in Sources */,
 			);
@@ -178,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				609BF6CCE7D92723F9DB7B2E /* FoundationTests.swift in Sources */,
+				47F9F52F0C54489A71507DC2 /* KalaiThemeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
