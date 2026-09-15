@@ -7,6 +7,6 @@ struct KalaiApp: App {
         WindowGroup {
             MainTabView()
         }
-        .modelContainer(for: [UserProfile.self, DailyDiary.self, FoodRecord.self])
+        .modelContainer(for: [UserProfile.self, DailyDiary.self, FoodRecord.self, CatalogFoodEntry.self])
     }
 }

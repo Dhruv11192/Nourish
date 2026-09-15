@@ -24,6 +24,7 @@
 		E18FBA251941F7429C9AAC28 /* DataIngestorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F55AA6359AE369DE8F04F /* DataIngestorTests.swift */; };
 		E674477529C8470A97008F86 /* DataIngestor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5466DB194C41FBB9B51B7 /* DataIngestor.swift */; };
 		EA1B05B72EBBC51A4344102D /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD823015E1AA091633F681 /* UserProfile.swift */; };
+		EB2AE5AD33B2DB2F27588603 /* CatalogFoodEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2632E3095EA58D601D5E5EF0 /* CatalogFoodEntry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		0A0F37DAC9573ECFA64666BF /* KalaiTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalaiTheme.swift; sourceTree = "<group>"; };
 		0EE57ED2EBEDC4DDD49478B6 /* DailyDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDiary.swift; sourceTree = "<group>"; };
 		23E944CF99C2AD1BDCA8C18F /* KalaiThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalaiThemeTests.swift; sourceTree = "<group>"; };
+		2632E3095EA58D601D5E5EF0 /* CatalogFoodEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogFoodEntry.swift; sourceTree = "<group>"; };
 		38587CB49192F323B6C44EAA /* FoodRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecord.swift; sourceTree = "<group>"; };
 		46404877B7416A9185123358 /* FoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationTests.swift; sourceTree = "<group>"; };
 		53E2D3F874A8E5D14BEC8265 /* CatalogFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogFood.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				53E2D3F874A8E5D14BEC8265 /* CatalogFood.swift */,
+				2632E3095EA58D601D5E5EF0 /* CatalogFoodEntry.swift */,
 				0EE57ED2EBEDC4DDD49478B6 /* DailyDiary.swift */,
 				38587CB49192F323B6C44EAA /* FoodRecord.swift */,
 				04CD823015E1AA091633F681 /* UserProfile.swift */,
@@ -231,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADC4ECB7298A596F7EBD4CEC /* CatalogFood.swift in Sources */,
+				EB2AE5AD33B2DB2F27588603 /* CatalogFoodEntry.swift in Sources */,
 				1AF123769D5EFC63B3420FB0 /* DailyDiary.swift in Sources */,
 				A244A6366048BCD41AD34E08 /* DashboardView.swift in Sources */,
 				E674477529C8470A97008F86 /* DataIngestor.swift in Sources */,

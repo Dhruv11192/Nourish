@@ -56,4 +56,26 @@ final class DataModelTests: XCTestCase {
         XCTAssertEqual(diaries.first?.foods.count, 1)
         XCTAssertEqual(diaries.first?.foods.first?.name, "Oatmeal")
     }
+
+    func testFoodRecordWithMealType() {
+        let food = FoodRecord(name: "Oatmeal", calories: 150, protein: 5, carbs: 27, fat: 3, mealType: "Breakfast")
+        XCTAssertEqual(food.mealType, "Breakfast")
+    }
+
+    func testCatalogFoodEntryInitialization() {
+        let entry = CatalogFoodEntry(
+            id: "12345",
+            name: "Greek Yogurt",
+            brand: "Chobani",
+            calories: 120,
+            protein: 15,
+            carbs: 6,
+            fat: 0,
+            servingSize: 170,
+            servingUnit: "g",
+            barcode: "012345678901"
+        )
+        XCTAssertEqual(entry.name, "Greek Yogurt")
+        XCTAssertEqual(entry.barcode, "012345678901")
+    }
 }
