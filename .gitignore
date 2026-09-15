@@ -22,6 +22,9 @@
 
 # Re-ignore generated or transient build artifacts
 Nourish.ipa
+Kalai.ipa
+Kalai/Kalai.ipa
+*.ipa
 build_log.txt
 .build/
 .swiftpm/
