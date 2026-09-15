@@ -8,18 +8,12 @@ struct DiaryView: View {
     @State private var selectedDate: Date = .now
     @State private var activeMealType: String?
 
-    var currentDiary: DailyDiary {
-        if let existing = diaries.first(where: { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) {
-            return existing
-        } else {
-            let newDiary = DailyDiary(date: selectedDate, foods: [])
-            modelContext.insert(newDiary)
-            return newDiary
-        }
+    var currentDiary: DailyDiary? {
+        diaries.first(where: { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) })
     }
 
     func foods(for mealType: String) -> [FoodRecord] {
-        currentDiary.foods.filter { $0.mealType == mealType }
+        currentDiary?.foods.filter { $0.mealType == mealType } ?? []
     }
 
     var body: some View {
@@ -57,14 +51,14 @@ struct DiaryView: View {
 
                     // Daily summary ring
                     HStack(spacing: 20) {
-                        MacroRingView(total: 2000, consumed: currentDiary.totalCalories)
+                        MacroRingView(total: 2000, consumed: currentDiary?.totalCalories ?? 0)
                             .frame(width: 100, height: 100)
 
                         VStack(alignment: .leading, spacing: 6) {
                             Text("Total Logged")
                                 .font(.caption)
                                 .foregroundStyle(KalaiTheme.colors.accent)
-                            Text("\(Int(currentDiary.totalCalories)) kcal")
+                            Text("\(Int(currentDiary?.totalCalories ?? 0)) kcal")
                                 .font(.title2.bold())
                                 .foregroundStyle(KalaiTheme.colors.text)
                             Text("Goal: 2000 kcal")
@@ -105,7 +99,10 @@ struct DiaryView: View {
                 activeMealType = $0?.type
             })) { wrapper in
                 FoodSearchView(mealType: wrapper.type, selectedDate: selectedDate) { newRecord in
-                    currentDiary.foods.append(newRecord)
+                    let diary = diaries.first(where: { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) })
+                        ?? DailyDiary(date: selectedDate, foods: [])
+                    if diary.modelContext == nil { modelContext.insert(diary) }
+                    diary.foods.append(newRecord)
                     try? modelContext.save()
                 }
             }
